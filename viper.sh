@@ -60,17 +60,6 @@ then
     echo -e " #__________________________________________________________________________________#\n"
     exit 1
 fi
-echo "la casse est: ${casef}"
-echo "l'ordre est: ${order}"
-echo "le format est: ${format}"
-echo "la liste est lÃ : ${dict}"
-echo "compte nombre de possibilitÃ©es en: ${nb}"
-
-if [ -z "$casef" ];then
-    echo "not -c set"
-  else
-    echo "casef vaut ${casef}"
-fi
 
 
 doWord(){
