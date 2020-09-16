@@ -64,7 +64,7 @@ then
     echo -e " #   Usage: ./viper.sh -d listOFWords.txt <options>                                 #"
     echo -e " #   -d <dictionnary> list of words                                                 #"
     echo -e " #   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                        #" 
-    echo -e " #   -o <order> normal <or> reverse <or> all                                         #"
+    echo -e " #   -o <order> normal <or> reverse <or> all                                        #"
     echo -e " #   -n <speed in k/s> Calcul the number of possibility and time to test them       #"
     echo -e " #__________________________________________________________________________________#\n"
     exit 1
