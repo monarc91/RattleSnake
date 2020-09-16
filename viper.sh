@@ -32,12 +32,14 @@ while getopts ":c:o:f:d:n:" opt; do
     esac
 done
 shift $((OPTIND -1))
+tput setaf 2
        echo "                       ____   ____.__                      "                  
        echo "                       \   \ /   /|__|_____   ___________  "
        echo "                        \   Y   / |  \____ \_/ __ \_  __ \ "
        echo "                         \     /  |  |  |_| |  ___/|  | \/ "
        echo "                          \___/   |__|   __/ \_____\__|    "
        echo "                                     |__|                  "
+tput setaf 7
 
 if [ $nb ]
 then
