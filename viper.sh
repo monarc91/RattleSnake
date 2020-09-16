@@ -97,7 +97,7 @@ doWord(){
           echo "$majInit${line:1:length}" # MAJ-word
           echo "${maj}"
         fi
-        for k in {1..2}
+        for k in {1..99}
         do
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
