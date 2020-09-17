@@ -76,11 +76,6 @@ then
     echo -e " #__________________________________________________________________________________#\n"
     exit 1
 fi
-echo "la casse est: ${casef}"
-echo "l'ordre est: ${order}"
-echo "le format est: ${format}"
-echo "la liste est lÃ : ${dict}"
-echo "compte nombre de possibilitÃ©es en: ${nb}"
 
 departements="CPFrance.txt"
 
@@ -106,15 +101,11 @@ terr() {
     done < "$departements"
 }
 
-# if [ "$dept" ]
-# then
-#  terr $dept
-#  for p in "${depart[@]}"
-#  do
-#    echo "$p"
-#  done
-# fi
-terr $dept
+
+if [[ ! -z $dept ]]
+then
+  terr $dept
+fi
 
 doWord(){
     file="$1"
