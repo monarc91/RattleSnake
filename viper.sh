@@ -74,7 +74,7 @@ doWord(){
     file="$1"
     [ ${2} ] && cas=$2 || cas=4
     [ ${3} ] && ord=$3 || ord="all"
-    echo $ord
+    # echo $ord
     while IFS= read -r line
     do
         length=${#line}
