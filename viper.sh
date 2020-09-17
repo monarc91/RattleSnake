@@ -104,7 +104,12 @@ terr() {
 
 if [[ ! -z $dept ]]
 then
-  terr $dept
+  if [[ $dept > 2 ]]
+  then
+    :
+   else
+    terr $dept
+  fi
 fi
 
 doWord(){
