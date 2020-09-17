@@ -16,6 +16,7 @@ this script add some number to words with aircrack like : 1word word1 to 99word 
      -d <dictionnary> list of words                                                 
      -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                        
      -o <order> normal <or> reverse <or> all                                        
+     -t for france add department fixed like 91230 or all department's zip with 91
      -n <speed in k/s> Calcul the number of possibility and time to test them (coming soon)
     
    # command:
