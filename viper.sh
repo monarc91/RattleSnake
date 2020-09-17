@@ -141,7 +141,7 @@ doWord(){
           echo "$majInit${line:1:length}" # MAJ-word
           echo "${maj}"
         fi
-        
+        # cases of territoire (departements) is set
         if [[ $cas -eq 1 && ! -z "$terre" && "$ord" == "all" ]]
         then
           echo "$line"
@@ -266,10 +266,7 @@ doWord(){
           then
             echo "$line$terre"
             echo "$majInit${line:1:length}$terre" # MAJ-word
-            echo "$terre$line"
-            echo "$terre$majInit${line:1:length}" # MAJ-word
             echo "${maj}$terre"
-            echo "$terre${maj}"
           else  
             for p in "${depart[@]}"
               do
