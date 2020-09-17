@@ -7,9 +7,11 @@ doWord(){
     do
         length=${#line}
         majInit=`echo ${line:0:1} |tr '[:lower:]' '[:upper:]'`
+        maj=`echo ${line} |tr '[:lower:]' '[:upper:]'`
 
         echo "$line"
         echo "$majInit${line:1:length}" # MAJ-word
+        echo "$maj"
 
         for k in {1..99}
         do
@@ -17,6 +19,8 @@ doWord(){
             echo "$k$majInit${line:1:length}" # number-MAJ-word
             echo "$line$k"
             echo "$k$line"
+            echo "$maj$k"
+            echo "$k$maj"
         done
     done < "$file"
 }
