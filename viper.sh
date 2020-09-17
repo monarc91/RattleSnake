@@ -104,7 +104,7 @@ terr() {
 
 if [[ ! -z $dept ]]
 then
-  if [[ $dept > 2 ]]
+  if [[ ${#dept} > 2 ]]
   then
     :
    else
