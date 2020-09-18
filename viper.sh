@@ -1,9 +1,12 @@
 #!/bin/bash
 
-while getopts ":c:o:f:d:n:t:" opt; do
+while getopts ":c:o:f:d:n:t:k:" opt; do
     case ${opt} in
         c )
           casef="${OPTARG}"
+          ;;
+        k )
+          numberTOAdd="${OPTARG}"
           ;;
         t )
           dept="${OPTARG}"
@@ -80,30 +83,30 @@ then
     echo -e " #__________________________________________________________________________________#\n"
     exit 1
 fi
+echo "la casse est: ${casef}"
+echo "l'ordre est: ${order}"
+echo "le format est: ${format}"
+echo "la liste est lÃ : ${dict}"
+echo "compte nombre de possibilitÃ©es en: ${nb}"
 
 departements="CPFrance.txt"
 
-# tableau des departements souhaités
 declare -a depart
-
-# get all french departements of this dept
 terr() {
   j=0
   dept=$1
   while IFS= read -r line
     do
-    if [ ${#dept} -gt 2 ];then
-      depart[0]=$dept
-    else
+    
       if [[ $line == $dept* ]];then
           depart[$j]=$line
           j=$((j + 1))
       fi
-    fi
+    
     done < "$departements"
 }
 
-# or just keep the number
+
 if [[ ! -z $dept ]]
 then
   if [[ ${#dept} > 2 ]]
@@ -116,10 +119,10 @@ fi
 
 doWord(){
     file="$1"
-    # set default value of $casef and $order to all and 4 or get its fro args
     [ ${2} ] && cas=$2 || cas=4
     [ ${3} ] && ord=$3 || ord="all"
     terre=$4
+    [ $5 ] && number=$5 || number=99
 
     while IFS= read -r line
     do
@@ -144,7 +147,7 @@ doWord(){
           echo "$majInit${line:1:length}" # MAJ-word
           echo "${maj}"
         fi
-        # cases of territoire (departements) is set
+        
         if [[ $cas -eq 1 && ! -z "$terre" && "$ord" == "all" ]]
         then
           echo "$line"
@@ -269,7 +272,10 @@ doWord(){
           then
             echo "$line$terre"
             echo "$majInit${line:1:length}$terre" # MAJ-word
+            echo "$terre$line"
+            echo "$terre$majInit${line:1:length}" # MAJ-word
             echo "${maj}$terre"
+            echo "$terre${maj}"
           else  
             for p in "${depart[@]}"
               do
@@ -340,7 +346,7 @@ doWord(){
               done
           fi
         fi
-        for k in {1..99}
+        for ((k=0; k<$number; k++))
         do
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
@@ -407,5 +413,5 @@ doWord(){
     done < "$file" 
 }
 
-doWord "$dict" "$casef" "$order" "$dept"
+doWord "$dict" "$casef" "$order" "$dept" "$numberTOAdd"
 
