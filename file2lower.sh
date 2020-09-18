@@ -16,4 +16,6 @@ doWord(){
 cat "$1" |sort -u > temp.txt
 # get to lower case
 doWord "temp.txt" "$2"
+rm temp.txt
+exit 0
 
