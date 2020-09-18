@@ -1,6 +1,6 @@
 # crackAddNumber
 
-this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
+this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).\n
 with lower Camel and UPPER cases (word,Word and WORD with -c option).
 -t is an option to test with all zipcodes of a french department or simply add a custom longer number.
 prenoms.txt is a dictionary's names for france (-d option).
