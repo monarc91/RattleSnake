@@ -1,4 +1,8 @@
-# crackAddNumber
+# Crack
+simple bash program add some number to words with aircrack like : 1word word1 to 99word and word99.
+with lower Camel and UPPER cases.
+
+# Viper
 
 this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
 
