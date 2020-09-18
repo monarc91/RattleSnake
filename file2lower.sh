@@ -13,7 +13,7 @@ doWord(){
     done < "$file" 
 } 
 # remove doubles
-cat "$2" |sort -u
+cat "$1" |sort -u
 # get to lower case
 doWord "$1" "$2"
 
