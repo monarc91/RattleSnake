@@ -409,4 +409,3 @@ doWord(){
 
 doWord "$dict" "$casef" "$order" "$dept"
 
-# le crime est toujours punit!
