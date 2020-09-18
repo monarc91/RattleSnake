@@ -83,12 +83,10 @@ fi
 
 departements="CPFrance.txt"
 
-if [ -z "$casef" ];then
-    echo "not -c set"
-  else
-    echo "casef vaut ${casef}"
-fi
+# tableau des departements souhaités
 declare -a depart
+
+# get all french departements of this dept
 terr() {
   j=0
   dept=$1
@@ -105,7 +103,7 @@ terr() {
     done < "$departements"
 }
 
-
+# or just keep the number
 if [[ ! -z $dept ]]
 then
   if [[ ${#dept} > 2 ]]
