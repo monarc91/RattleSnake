@@ -23,7 +23,8 @@ prenoms.txt is a dictionary's names for france (-d option).
                          \___/   |__|   __/ \_____\__|    
                                     |__|                
   # Usage: ./viper.sh -d listOFWords.txt <options>                                 
-     -d <dictionnary> list of words                                                 
+     -d <dictionnary> list of words 
+     -k number to add like 2000 for 1..2000
      -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                        
      -o <order> normal <or> reverse <or> all                                        
      -t for france add department fixed like 91230 or all department's zip of 91
