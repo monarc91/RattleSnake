@@ -116,6 +116,7 @@ fi
 
 doWord(){
     file="$1"
+    # set default value of $casef and $order to all and 4 or get its fro args
     [ ${2} ] && cas=$2 || cas=4
     [ ${3} ] && ord=$3 || ord="all"
     terre=$4
