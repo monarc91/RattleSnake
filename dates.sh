@@ -103,7 +103,6 @@ doWord(){
         fi
         if  [ $cas -eq 4 ] 
         then
-          echo "oui"
           echo "$line"
           echo "$majInit${line:1:length}" # MAJ-word
           echo "${maj}"
@@ -124,25 +123,52 @@ doWord(){
         then
             echo "${k}${line}"
         fi
-        if  [ $cas -eq 2 ] 
+        if  [[ $cas -eq 2 && $ord == "all" ]]
         then
-            echo "$majInit${line:1:length}" # MAJ-word
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
         fi
-        if  [ $cas -eq 3 ] 
+        if  [[ $cas -eq 2 && $ord == "normal" ]] 
+        then
+            echo "${majInit}${line:1:length}${k}" # MAJ-word-number
+        fi
+        if  [[ $cas -eq 2 && $ord == "reverse" ]]
+        then
+            echo "${k}${majInit}${line:1:length}" # number-MAJ-word
+        fi
+        if  [[ $cas -eq 3 && $ord == "all" ]] 
         then
             echo "${maj}"
             echo "${maj}${k}"
             echo "${k}${maj}"
         fi
-        if  [ $cas -eq 4 ] 
+        if  [[ $cas -eq 3 && $ord == "normal" ]] 
+        then
+            echo "${maj}${k}"
+        fi
+        if  [[ $cas -eq 3 && $ord == "reverse" ]] 
+        then
+            echo "${k}${maj}"
+        fi
+        if  [[ $cas -eq 4 && $ord == "all" ]] 
         then
             echo "${maj}${k}"
             echo "${k}${maj}"
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${line}${k}"
+            echo "${k}${line}"
+        fi
+        if  [[ $cas -eq 4 && $ord == "normal" ]] 
+        then
+            echo "${maj}${k}"
+            echo "${majInit}${line:1:length}${k}" # MAJ-word-number
+            echo "${line}${k}"
+        fi
+        if  [[ $cas -eq 4 && $ord == "reverse" ]] 
+        then
+            echo "${k}${maj}"
+            echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${k}${line}"
         fi
         
