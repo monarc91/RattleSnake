@@ -1,9 +1,13 @@
 #!/bin/bash
 
-while getopts ":c:o:f:d:n:t:k:" opt; do
+
+while getopts ":c:o:f:d:n:t:k:b:" opt; do
     case ${opt} in
         c )
           casef="${OPTARG}"
+          ;;
+        b )
+          longueurMAXDate="${OPTARG}"
           ;;
         k )
           numberTOAdd="${OPTARG}"
@@ -52,7 +56,11 @@ tput setaf 2
        echo "                          \___/   |__|   __/ \_____\__|    "
        echo "                                     |__|                  "
 tput setaf 7
-
+if [ $longueurMAXDate ]
+then
+    ./date.sh $provis $dict $casef $order
+    exit 0
+fi
 if [ $nb ]
 then
     nbWords=`< $dict wc -l`
@@ -83,11 +91,6 @@ then
     echo -e " #__________________________________________________________________________________#\n"
     exit 1
 fi
-echo "la casse est: ${casef}"
-echo "l'ordre est: ${order}"
-echo "le format est: ${format}"
-echo "la liste est lÃ : ${dict}"
-echo "compte nombre de possibilitÃ©es en: ${nb}"
 
 departements="CPFrance.txt"
 
@@ -105,7 +108,6 @@ terr() {
     
     done < "$departements"
 }
-
 
 if [[ ! -z $dept ]]
 then
@@ -415,3 +417,4 @@ doWord(){
 
 doWord "$dict" "$casef" "$order" "$dept" "$numberTOAdd"
 
+# le crime est toujours punit!
