@@ -1,5 +1,11 @@
 #!/bin/bash
-
+    #========================================================#
+    #   Usage: ./viper.sh -d listOFWords.txt <options>       #
+    #   VIPER to accomodate dictionnary                      #
+    #   Author: Monarc(Marc Segur)                           # 
+    #   Date: 15 september 2020                              #
+    #   Licence:  GPL3                                       #
+    #________________________________________________________#
 
 while getopts ":c:o:f:d:n:t:k:b:" opt; do
     case ${opt} in
