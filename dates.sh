@@ -1,5 +1,12 @@
 #!/bin/bash
 
+    #========================================================#
+    #   Usage: ./viper.sh -d listOFWords.txt <options>       #
+    #   VIPER to accomodate dictionnary                      #
+    #   Author: Monarc(Marc Segur)                           # 
+    #   Date: 15 september 2020                              #
+    #   Licence:  GPL3                                       #
+    #________________________________________________________#
 
 longueurMaxDate=$1
 possibilities=0
