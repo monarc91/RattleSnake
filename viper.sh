@@ -8,9 +8,10 @@
     #                        |__|                            #
     #                                                        #
     #========================================================#
-    #   Viper.sh                        #
+    #   viper.sh                                             #
     #   VIPER to accommodate dictionnary                     #
-    #   Author: Monarc(Marc Segur)                           # 
+    #   Author: Monarc(Marc Segur)                           #
+    #   Contact: pc-mac@mail.com                             # 
     #   Date: 15 september 2020                              #
     #   Version: 0.8.0                                       #
     #   Licence:  GPL3                                       #
