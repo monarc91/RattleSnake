@@ -77,6 +77,17 @@ tput setaf 2
 
 
 tput setaf 7
+
+if [[ ! -z $longueurMAXDate && ! -z $numberTOAdd ]]
+then
+    echo "dont use -k option with -b dates otions"
+    exit 0
+fi
+if [[ ! -z $longueurMAXDate && ! -z $dept ]]
+then
+    echo "dont use -t option with -b dates otions"
+    exit 0
+fi
 if [[ ! -z $longueurMAXDate && ! -z $dict ]]
 then
     [ $casef ]&& : || casef=4
