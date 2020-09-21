@@ -12,7 +12,7 @@
     #   VIPER to accommodate dictionnary                     #
     #   Author: Monarc(Marc Segur)                           # 
     #   Date: 15 september 2020                              #
-    #   Version: 0.7.2                                       #
+    #   Version: 0.8.0                                       #
     #   Licence:  GPL3                                       #
     #________________________________________________________#
 
