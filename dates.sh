@@ -1,10 +1,18 @@
 #!/bin/bash
-
+    #--------------------------------------------------------#
+    #          ____   ____.__                                # 
+    #          \   \ /   /|__|_____   ___________            #
+    #           \   Y   / |  \____ \_/ __ \_  __ \           #
+    #            \     /  |  |  |_| |  ___/|  | \/           #
+    #             \___/   |__|   __/ \_____\__|              #
+    #                        |__|                            #
+    #                                                        #
     #========================================================#
-    #   Usage: ./viper.sh -d listOFWords.txt <options>       #
-    #   VIPER to accomodate dictionnary                      #
+    #   Date.sh is a part of Viper.sh                        #
+    #   VIPER to accommodate dictionnary                     #
     #   Author: Monarc(Marc Segur)                           # 
     #   Date: 15 september 2020                              #
+    #   Version: 0.7.2                                       #
     #   Licence:  GPL3                                       #
     #________________________________________________________#
 
