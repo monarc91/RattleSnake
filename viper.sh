@@ -1,20 +1,5 @@
 #!/bin/bash
-    #--------------------------------------------------------#
-    #          ____   ____.__                                # 
-    #          \   \ /   /|__|_____   ___________            #
-    #           \   Y   / |  \____ \_/ __ \_  __ \           #
-    #            \     /  |  |  |_| |  ___/|  | \/           #
-    #             \___/   |__|   __/ \_____\__|              #
-    #                        |__|                            #
-    #                                                        #
-    #========================================================#
-    #   Usage: ./viper.sh -d listOFWords.txt <options>       #
-    #   VIPER to accommodate dictionnary                     #
-    #   Author: Monarc(Marc Segur)                           # 
-    #   Date: 15 september 2020                              #
-    #   Version: 0.7.2                                       #
-    #   Licence:  GPL3                                       #
-    #________________________________________________________#
+
 
 while getopts ":c:o:f:d:n:t:k:b:" opt; do
     case ${opt} in
@@ -69,11 +54,17 @@ tput setaf 2
        echo "                        \   Y   / |  \____ \_/ __ \_  __ \ "
        echo "                         \     /  |  |  |_| |  ___/|  | \/ "
        echo "                          \___/   |__|   __/ \_____\__|    "
-       echo "                                     |__|                  "
+       echo "Licence: GPL3                        |__|                  "
+       echo "Viper par Monarc(Marc Segur)               Version: 0.7.2  "
+       echo "-----------------------------------------------------------"
+
+
 tput setaf 7
-if [ $longueurMAXDate ]
+if [[ ! -z $longueurMAXDate && ! -z $dict ]]
 then
-    ./date.sh $provis $dict $casef $order
+    [ $casef ]&& : || casef=4
+    [ $order ]&& : || order="normal"
+    ./date.sh $longueurMAXDate $dict $casef $order
     exit 0
 fi
 if [ $nb ]
