@@ -19,6 +19,7 @@ prenoms.txt is a dictionary's names for france (-d option).
   # Usage: ./viper.sh -d listOFWords.txt <options>                                 
      -d <dictionnary> list of words 
      -k number to add like 2000 for 1..2000 (default 99)
+     -b date all dates possible with (3,4,5,6,7,8 number) ex: ./viper.sh -b 4 -c 1 -o normal
      -c <case> lower:1 Camel:2 UPPER:3 ALL:4 (default ALL)                                       
      -o <order> normal <or> reverse <or> all (default all)                                     
      -t for france add department fixed like 91230 or all department's zip of 91 (default None)
