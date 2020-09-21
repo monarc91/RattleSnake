@@ -29,73 +29,147 @@ dat()
     indexA=0
     for y in {1945..2020}
     do
-        if [ "$1" -eq 4 ]
+        if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
         then
             dates1["$indexA"]="$y"
             indexA=$(($indexA+1))
+            possibilities=$(($possibilities+1))
         fi
         for m in {01..12}
         do
-            if [ "$1" -eq 4 ]
+            if [[ $1 -eq 3 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${m:$lgd}${y:2}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+            fi
+            if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
                 then
                     lgd=1
                     dates1["$indexA"]="$m${y:2}"
                     indexA=$(($indexA+1))
                     possibilities=$(($possibilities+1)) 
             fi
+            if [[ $1 -eq 5 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${m:1}${y}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+            fi
+            if [[ $1 -eq 6 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${m}${y}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+            fi
+            
             for d in {01..31}
             do
-                if [ "$1" -eq 4 ]
+                if [[ $1 -eq 3 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${d:$lgd}${m}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+            fi
+                if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
                 then
                     lgd=1
                     if [[ $m < 10 && $d < 10 ]]
                     then
                         dates1["$indexA"]="${d:$lgd}${m:$lgd}${y:2}"
-                        possibilities=$(($possibilities+2))
+                        possibilities=$(($possibilities+1))
                         indexA=$(($indexA+1))
                     fi
                     dates1["$indexA"]="$d$m"
                     indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1))
                 fi
-                #echo "$d$m${y:2}"
+                if [[ $1 -eq 5 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    if [[ $d < 10 ]]
+                    then
+                        dates1["$indexA"]="${d:$lgd}${m}${y:2}"
+                        possibilities=$(($possibilities+1))
+                        indexA=$(($indexA+1))
+                    fi
+                    # dates1["$indexA"]="$d$m"
+                    # indexA=$(($indexA+1))
+                fi
+                if [[ $1 -eq 6 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=2
+                    dates1["$indexA"]="${d}${m}${y:$lgd}"
+                    indexA=$(($indexA+1))
+                    dates1["$indexA"]="${d:1}${m:1}${y}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+2)) 
+                fi
+                if [[ $1 -eq 7 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${d:$lgd}${m}${y}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+                fi
+                if [[ $1 -eq 8 ]] || [[ $1 -eq 9 ]]
+                then
+                    lgd=1
+                    dates1["$indexA"]="${d}${m}${y}"
+                    indexA=$(($indexA+1))
+                    possibilities=$(($possibilities+1)) 
+                fi
             done
-        done
+        done 
     done
+
     echo "done"
-    echo "${dates1[@]}" | tr ' ' '\n' | sort -u > temp.sn
+    # is a bit hacky prefer => eval dates=($(printf "%s\n" "${dates1[@]}" | sort -u)) or
+    # echo "${dates1[@]}" | tr ' ' '\n' | sort -u > temp.sn
+    # but better dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
 
     
-    file="temp.sn"
-    poss=0
-    j=0
-        while IFS= read -r line
-        do
-            dates["$j"]="${line}"
-            # echo "$line placé dans dates[]"
-            poss=$(($poss+1))
-            j=$(($j+1))
-        done < "$file"
-
-    rm temp.sn
+    dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
+    
+        # file="temp.sn"
+    
+        # j=0
+        # while IFS= read -r line
+        # do
+        #     dates["$j"]="${line}"
+        #     # echo "$line placé dans dates[]"
+        #     poss=$(($poss+1))
+        #     j=$(($j+1))
+        # done < "$file"
+ 
+   
+        # rm temp.sn
     echo -e "Removed temp file and array ready!"
     echo -e "---------------------------------\n"
 }
-
+poss=0
 unset dates1
+
 dat $1
+
 # for h in ${dates[@]}
 #     do
 #         echo $h
+#         poss=$(($poss+1))
 #     done
-echo "Enfin finit nombre de possibilités en 4 chiffres: $possibilities"
-echo "possibilités une fois triées: $poss"
+# echo "Enfin finit nombre de possibilités en all chiffres: $possibilities"
+# echo "possibilités une fois triées: $poss"
 order=$4
 case=$3
 dict=$2
-echo " $dict est le dico $case est la casse et $order est l'ordre,  hello monarc!"
+echo " $dict est le dico $case est la casse et $order est l'ordre, hello monarc!"
 
 doWord(){
-    file="$1"
+    file="$dict"
     [ ${2} ] && cas=$2 || cas=4
     [ ${3} ] && ord=$3 || ord="all"
     echo $ord
@@ -193,6 +267,5 @@ doWord(){
 
 doWord "$dict" "$case" "$order"
 
-exit 0
 
-# bossé en deux heures
+
