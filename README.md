@@ -8,7 +8,7 @@ with lower Camel and UPPER cases (word,Word and WORD with -c option).
 
 prenoms.txt is a dictionary's names for france (-d option).
 
-And -b is an option for possibles dates (only french's format for the moment)
+And -b is an option for possibles dates [1945-2020] (only french's format for the moment)...
     
 # Viper.sh
 
