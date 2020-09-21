@@ -71,7 +71,7 @@ tput setaf 2
        echo "                         \     /  |  |  |_| |  ___/|  | \/ "
        echo "                          \___/   |__|   __/ \_____\__|    "
        echo "Licence: GPL3                        |__|                  "
-       echo "Viper par Monarc(Marc Segur)               Version: 0.7.2  "
+       echo "Viper par Monarc(Marc Segur)               Version: 0.8.0  "
        echo "-----------------------------------------------------------"
 
 
