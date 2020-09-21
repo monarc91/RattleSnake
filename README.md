@@ -7,6 +7,8 @@ with lower Camel and UPPER cases (word,Word and WORD with -c option).
 -t is an option to test with all zipcodes of a french department or simply add a custom longer number.
 
 prenoms.txt is a dictionary's names for france (-d option).
+
+And -b is an option for possibles dates (only french's format for the moment)
     
 # Viper.sh
 
