@@ -9,9 +9,10 @@
     #                                                        #
     #========================================================#
     #   Usage: ./viper.sh -d listOFWords.txt <options>       #
-    #   VIPER to accommodate dictionnary                      #
+    #   VIPER to accommodate dictionnary                     #
     #   Author: Monarc(Marc Segur)                           # 
     #   Date: 15 september 2020                              #
+    #   Version: 0.7.2                                       #
     #   Licence:  GPL3                                       #
     #________________________________________________________#
 
