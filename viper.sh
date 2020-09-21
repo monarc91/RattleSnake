@@ -8,7 +8,7 @@
     #                        |__|                            #
     #                                                        #
     #========================================================#
-    #   Date.sh is a part of Viper.sh                        #
+    #   Viper.sh                        #
     #   VIPER to accommodate dictionnary                     #
     #   Author: Monarc(Marc Segur)                           # 
     #   Date: 15 september 2020                              #
