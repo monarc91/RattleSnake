@@ -1,9 +1,3 @@
-# Crack
-simple bash program add some number to words with aircrack like : 1word word1 to 99word and word99.
-with lower Camel and UPPER cases.
-# command: 
-    ./crack.sh /home/kali/words.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
-
 # Viper
 
 this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
@@ -33,3 +27,10 @@ prenoms.txt is a dictionary's names for france (-d option).
    # command:
         ./viper.sh -d listWords.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap <for all possibilities>
         ./viper.sh -d list.txt -c 2 -o all |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+        
+# Crack
+simple bash program add some number to words with aircrack like : 1word word1 to 99word and word99.
+with lower Camel and UPPER cases.
+# command: 
+    ./crack.sh /home/kali/words.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+
