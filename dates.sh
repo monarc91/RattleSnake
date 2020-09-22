@@ -494,6 +494,34 @@ then
             dat8
         fi
     done
+else
+    if [[ ${data} == 3 ]]
+        then
+            dat3
+            # echo "oui 3"
+        fi
+        if [[ ${data} == 4 ]]
+        then
+            dat4
+            # echo "oui 4"
+        fi
+        if [[ ${data} == 5 ]]
+        then
+            dat5
+            # echo "oui 5"
+        fi
+        if [[ ${data} == 6 ]]
+        then
+            dat6
+        fi
+        if [[ ${data} == 7 ]]
+        then
+            dat7
+        fi
+        if [[ ${data} == 8 ]]
+        then
+            dat8
+        fi
 fi
 
 
