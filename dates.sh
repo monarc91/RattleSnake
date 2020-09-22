@@ -1,160 +1,508 @@
 #!/bin/bash
-    #--------------------------------------------------------#
-    #          ____   ____.__                                # 
-    #          \   \ /   /|__|_____   ___________            #
-    #           \   Y   / |  \____ \_/ __ \_  __ \           #
-    #            \     /  |  |  |_| |  ___/|  | \/           #
-    #             \___/   |__|   __/ \_____\__|              #
-    #                        |__|                            #
-    #                                                        #
-    #========================================================#
-    #   Date.sh is a part of Viper.sh                        #
-    #   VIPER to accommodate dictionnary                     #
-    #   Author: Monarc(Marc Segur)                           # 
-    #   Date: 15 september 2020                              #
-    #   Version: 0.8.0                                       #
-    #   Licence:  GPL3                                       #
-    #________________________________________________________#
+    #--------------------------------------------------------------------------#
+    #                __    __  .__                               __            #
+    # ____ _______ _/  |__/  |_|  |   ____   ______ ____ _____  |  | __ ____   #
+    # \_  __ \__  \\   __\   __\  | _/ __ \ /  ___//    \\__  \ |  |/ // __ \  #
+    #  |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/  #
+    #  |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____> #
+    #                                                                          #
+    #                                                                          #
+    #==========================================================================#
+    #   viper.sh                                                               #
+    #   VIPER to accommodate dictionnary                                       #
+    #   Author: Monarc(Marc Segur)                                             #
+    #   Contact: pc-mac@mail.com                                               # 
+    #   Date: 15 september 2020                                                #
+    #   Version: 0.8.0                                                         #
+    #   Licence:  GPL3                                                         #
+    #   Copyright: Monarc(c)2020                                               #
+    #__________________________________________________________________________#
+
 
 longueurMaxDate=$1
 possibilities=0
-
 declare -a dates1
 declare -a dates
 
-
-
-dat() 
-{
-    indexA=0
-    for y in {1945..2020}
-    do
-        if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
+trenteun(){
+    mois="$1"
+    if [[ "$mois" == "01" ]] || [[ "$mois" == "03" ]]
         then
-            dates1["$indexA"]="$y"
-            indexA=$(($indexA+1))
-            possibilities=$(($possibilities+1))
-        fi
-        for m in {01..12}
-        do
-            if [[ $1 -eq 3 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${m:$lgd}${y:2}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-            fi
-            if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="$m${y:2}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-            fi
-            if [[ $1 -eq 5 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${m:1}${y}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-            fi
-            if [[ $1 -eq 6 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${m}${y}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-            fi
-            
-            for d in {01..31}
-            do
-                if [[ $1 -eq 3 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${d:$lgd}${m}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-            fi
-                if [[ $1 -eq 4 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    if [[ $m < 10 && $d < 10 ]]
-                    then
-                        dates1["$indexA"]="${d:$lgd}${m:$lgd}${y:2}"
-                        possibilities=$(($possibilities+1))
-                        indexA=$(($indexA+1))
-                    fi
-                    dates1["$indexA"]="$d$m"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1))
-                fi
-                if [[ $1 -eq 5 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    if [[ $d < 10 ]]
-                    then
-                        dates1["$indexA"]="${d:$lgd}${m}${y:2}"
-                        possibilities=$(($possibilities+1))
-                        indexA=$(($indexA+1))
-                    fi
-                    # dates1["$indexA"]="$d$m"
-                    # indexA=$(($indexA+1))
-                fi
-                if [[ $1 -eq 6 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=2
-                    dates1["$indexA"]="${d}${m}${y:$lgd}"
-                    indexA=$(($indexA+1))
-                    dates1["$indexA"]="${d:1}${m:1}${y}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+2)) 
-                fi
-                if [[ $1 -eq 7 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${d:$lgd}${m}${y}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-                fi
-                if [[ $1 -eq 8 ]] || [[ $1 -eq 9 ]]
-                then
-                    lgd=1
-                    dates1["$indexA"]="${d}${m}${y}"
-                    indexA=$(($indexA+1))
-                    possibilities=$(($possibilities+1)) 
-                fi
-            done
-        done 
-    done
-
-    echo "done"
-    # is a bit hacky prefer => eval dates=($(printf "%s\n" "${dates1[@]}" | sort -u)) or
-    # echo "${dates1[@]}" | tr ' ' '\n' | sort -u > temp.sn
-    # but better dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
-
-    
-    dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
-    
-        # file="temp.sn"
-    
-        # j=0
-        # while IFS= read -r line
-        # do
-        #     dates["$j"]="${line}"
-        #     # echo "$line placé dans dates[]"
-        #     poss=$(($poss+1))
-        #     j=$(($j+1))
-        # done < "$file"
- 
-   
-        # rm temp.sn
-    echo -e "Removed temp file and array ready!"
-    echo -e "---------------------------------\n"
+            result=1
+    fi
+    if [[ "$mois" == "05" ]] || [[ "$mois" == "07" ]]
+        then
+            result=1
+    fi
+    if [[ "$mois" == "08" ]] || [[ "$mois" == "10" ]]
+        then
+            result=1
+    fi
+    if [[ "$mois" == "10" ]] 
+        then
+            result=1
+    fi
+    if [[ "$mois" == "12" ]] 
+        then
+            result=1
+    fi
+    if [[ $result -eq 1 ]] 
+        then
+            true
+        else
+            false
+    fi
 }
-poss=0
+
+
+isleap() { date -d $1-02-29 &>/dev/null && true || false; }
+
+indexA=0
+dat8()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="$d$m$y"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="$d$m$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+        dates1["$indexA"]="$d$m$y"
+        indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="$d$m$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+        dates1["$indexA"]="$d$m$y"
+        indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+dat7()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="${d:1}$m$y"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="$d${m:1}$y"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="${d:1}$m$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$d${m:1}$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d:1}$m$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$d${m:1}$y"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="${d:1}$m$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$d${m:1}$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d:1}$m$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$d${m:1}$y"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+dat6()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="${d}$m${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${d:1}${m:1}$y"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="${d}$m${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d}$m${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}$y"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="${d}$m${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}$y"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d}$m${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}$y"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+dat5()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="${d}${m:1}${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${m:1}$y"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${d:1}${m}${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${m:1}${y}"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="${d}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="${d}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+
+dat4()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="${d:1}${m:1}${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="$y"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${d:1}${m:1}${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${d}${m}"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d}${m}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d}${m}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d}${m}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="$y"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d}${m}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+dat3()
+{
+
+    for y in {1950..1952}
+    do
+    for m in {01..12}
+    do
+    if $( trenteun $m )
+    then
+        for d in {01..31}
+        do
+        dates1["$indexA"]="${m:1}${y:2}"
+        indexA=$(($indexA + 1))
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${d:1}${m}"
+        indexA=$(($indexA + 1))
+        done
+    fi
+    if $( isleap $y ) 
+    then
+        if [[ $m == 02 ]]
+        then
+            for d in {01..29}
+            do
+            dates1["$indexA"]="${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    else
+        if [[ $m == 02 ]]  
+        then
+            for d in {01..28}
+            do
+            dates1["$indexA"]="${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}"
+            indexA=$(($indexA + 1))
+            done
+        else
+        for d in {01..30}
+        do
+            dates1["$indexA"]="${m:1}${y:2}"
+            indexA=$(($indexA + 1))
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${d:1}${m}"
+            indexA=$(($indexA + 1))
+        done
+        fi
+    fi
+    done
+    done
+}
+# if isleap 1981
+# then
+#     echo "oui marc is leap"
+#   else 
+#     echo "non pas leap year"
+# fi
+data=$1
+lgdt=${#data}
+if [[ $lgdt > 1 ]]
+then
+    for ((i=0;i<$lgdt+1;i++))
+    do
+        if [[ ${data:$i} == 3* ]]
+        then
+            dat3
+            # echo "oui 3"
+        fi
+        if [[ ${data:$i} == 4* ]]
+        then
+            dat4
+            # echo "oui 4"
+        fi
+        if [[ ${data:$i} == 5* ]]
+        then
+            dat5
+            # echo "oui 5"
+        fi
+        if [[ ${data:$i} == 6* ]]
+        then
+            dat6
+        fi
+        if [[ ${data:$i} == 7* ]]
+        then
+            dat7
+        fi
+        if [[ ${data:$i} == 8* ]]
+        then
+            dat8
+        fi
+    done
+fi
+
+
+# function year completes
+# dat3;dat5;dat4;dat6;dat7;dat8
+dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
+# poss=0
 unset dates1
 
-dat $1
 
 # for h in ${dates[@]}
 #     do
@@ -163,10 +511,14 @@ dat $1
 #     done
 # echo "Enfin finit nombre de possibilités en all chiffres: $possibilities"
 # echo "possibilités une fois triées: $poss"
+
+
+
+
 order=$4
 case=$3
 dict=$2
-echo " $dict est le dico $case est la casse et $order est l'ordre, hello monarc!"
+# echo " $dict est le dico $case est la casse et $order est l'ordre, hello monarc!"
 
 doWord(){
     file="$dict"
@@ -198,6 +550,7 @@ doWord(){
         fi
         for k in ${dates[@]}
         do
+            echo "$k"
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
             echo "${line}${k}"
@@ -266,6 +619,5 @@ doWord(){
 }
 
 doWord "$dict" "$case" "$order"
-
 
 
