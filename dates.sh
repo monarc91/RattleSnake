@@ -8,7 +8,7 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   viper.sh                                                               #
+    #   dates.sh is part of viper.sh (rtlsnake.sh RattleSnake)                 #
     #   VIPER to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
