@@ -552,7 +552,8 @@ doWord(){
     file="$dict"
     [ ${2} ] && cas=$2 || cas=4
     [ ${3} ] && ord=$3 || ord="all"
-    echo $ord
+    l=0
+    
     while IFS= read -r line
     do
         length=${#line}
@@ -578,39 +579,55 @@ doWord(){
         fi
         for k in ${dates[@]}
         do
+        if [[ $l == 0 ]];then
             echo "$k"
+        fi
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
             echo "${line}${k}"
             echo "${k}${line}"
+            l=$(($l+1))
+
           
         fi
         if [[ $cas -eq 1 && $ord == "normal" ]]
         then
             echo "${line}${k}"
+            l=$(($l+1))
+
         fi
         if [[ $cas -eq 1 && $ord == "reverse" ]]
         then
             echo "${k}${line}"
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 2 && $ord == "all" ]]
         then
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 2 && $ord == "normal" ]] 
         then
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 2 && $ord == "reverse" ]]
         then
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 3 && $ord == "all" ]] 
         then
             echo "${maj}"
             echo "${maj}${k}"
             echo "${k}${maj}"
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 3 && $ord == "normal" ]] 
         then
@@ -628,18 +645,23 @@ doWord(){
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${line}${k}"
             echo "${k}${line}"
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 4 && $ord == "normal" ]] 
         then
             echo "${maj}${k}"
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${line}${k}"
+            l=$(($l+1))
+
         fi
         if  [[ $cas -eq 4 && $ord == "reverse" ]] 
         then
             echo "${k}${maj}"
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${k}${line}"
+            l=$(($l+1))
         fi
         
       done
