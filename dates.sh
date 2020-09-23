@@ -18,7 +18,23 @@
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
 
+    # This file is part of RattleSnake.
 
+    # RattleSnake is free software: you can redistribute it and/or modify
+    # it under the terms of the GNU General Public License as published by
+    # the Free Software Foundation, either version 3 of the License, or
+    # (at your option) any later version.
+
+    # Foobar is distributed in the hope that it will be useful,
+    # but WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    # GNU General Public License for more details.
+
+    # You should have received a copy of the GNU General Public License
+    # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+
+datey=`date +%Y`
+datey=$((datey+1))
 longueurMaxDate=$1
 possibilities=0
 declare -a dates1
@@ -60,8 +76,11 @@ isleap() { date -d $1-02-29 &>/dev/null && true || false; }
 indexA=0
 dat8()
 {
-
-    for y in {1950..1952}
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
+    
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -110,8 +129,11 @@ dat8()
 }
 dat7()
 {
-
-    for y in {1950..1952}
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
+    
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -170,8 +192,11 @@ dat7()
 }
 dat6()
 {
-
-    for y in {1950..1952}
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
+    
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -230,8 +255,11 @@ dat6()
 }
 dat5()
 {
-
-    for y in {1950..1952}
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
+    
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -310,9 +338,12 @@ dat5()
 }
 
 dat4()
-{
-
-    for y in {1950..1952}
+{   
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
+    
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -391,8 +422,11 @@ dat4()
 }
 dat3()
 {
+    laps=$1
+    # D=${laps:0:4}
+    # A=${laps:5}
 
-    for y in {1950..1952}
+    for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
     do
@@ -461,6 +495,7 @@ dat3()
 #     echo "non pas leap year"
 # fi
 data=$1
+lapsDate=$5
 lgdt=${#data}
 if [[ $lgdt > 1 ]]
 then
@@ -468,59 +503,59 @@ then
     do
         if [[ ${data:$i} == 3* ]]
         then
-            dat3
+            dat3 $lapsDate
             # echo "oui 3"
         fi
         if [[ ${data:$i} == 4* ]]
         then
-            dat4
+            dat4 $lapsDate
             # echo "oui 4"
         fi
         if [[ ${data:$i} == 5* ]]
         then
-            dat5
+            dat5 $lapsDate
             # echo "oui 5"
         fi
         if [[ ${data:$i} == 6* ]]
         then
-            dat6
+            dat6 $lapsDate
         fi
         if [[ ${data:$i} == 7* ]]
         then
-            dat7
+            dat7 $lapsDate
         fi
         if [[ ${data:$i} == 8* ]]
         then
-            dat8
+            dat8 $lapsDate
         fi
     done
 else
     if [[ ${data} == 3 ]]
         then
-            dat3
+            dat3 $lapsDate
             # echo "oui 3"
         fi
         if [[ ${data} == 4 ]]
         then
-            dat4
+            dat4 $lapsDate
             # echo "oui 4"
         fi
         if [[ ${data} == 5 ]]
         then
-            dat5
+            dat5 $lapsDate
             # echo "oui 5"
         fi
         if [[ ${data} == 6 ]]
         then
-            dat6
+            dat6 $lapsDate
         fi
         if [[ ${data} == 7 ]]
         then
-            dat7
+            dat7 $lapsDate
         fi
         if [[ ${data} == 8 ]]
         then
-            dat8
+            dat8 $lapsDate
         fi
 fi
 
