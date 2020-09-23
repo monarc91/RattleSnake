@@ -75,15 +75,17 @@ while getopts ":c:o:f:d:n:t:k:b:l:" opt; do
         \? )
           echo    " Invalid Option: -$OPTARG" 1>&2
           tput setaf 3  
-          echo    "#===============================================================================#"
-          echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
-          echo -e "#   -d <dictionnary> list of words                                              #"
-          echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
-          echo -e "#   -o <order> normal <or> revert <or> all                                      #"
-          echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
-          echo -e "#    number for a unique number to add                                          #"
-          echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
-          echo -e "#_______________________________________________________________________________#\n"
+            echo    "#===============================================================================#"
+            echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
+            echo -e "#   -d <dictionnary> list of words                                              #"
+            echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
+            echo -e "#   -o <order> normal <or> revert <or> all                                      #"
+            echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
+            echo -e "#    number for a unique number to add                                          #"
+            echo -e "#   -b for multipe number ex 357 for 3, 5 and 7 formating (use with -l)         #"
+            echo -e "#   -l laps of dates ex: -l 1945-2000 for dates since 1945 to 2000              #"
+            echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
+            echo -e "#_______________________________________________________________________________#\n"
           tput setaf 7
           exit 1
           ;;
@@ -158,6 +160,8 @@ then
     echo -e "#   -o <order> normal <or> revert <or> all                                      #"
     echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
     echo -e "#    number for a unique number to add                                          #"
+    echo -e "#   -b for multipe number ex 357 for 3, 5 and 7 formating (use with -l)         #"
+    echo -e "#   -l laps of dates ex: -l 1945-2000 for dates since 1945 to 2000              #"
     echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
     echo -e "#_______________________________________________________________________________#\n"
     tput setaf 7
