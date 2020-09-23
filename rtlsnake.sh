@@ -125,13 +125,23 @@ then
     echo "Use -b 3 or 345 or 456 for multiple length of dates with -l dates laps options only"
     exit 0
 fi
-if [[ ! -z $longueurMAXDate && ! -z $dict ]]
+if [[ ! -z $longueurMAXDate && ! -z $dict ]] && [[ ! -z $lapsDate ]]
 then
-    [ $casef ]&& : || casef=4
-    [ $order ]&& : || order="normal"
-    [ $lapsDate ]&& : || lapsDate="1950-2020"
-    ./date.sh $longueurMAXDate $dict $casef $order $lapsDate
-    exit 0
+    if [[ $longueurMAXDate =~ ^[0-9]+$ ]]; then
+          if [[ $lapsDate =~ ^[0-9]{4}-[0-9]{4}$ ]]; then
+              [ $casef ]&& : || casef=4
+              [ $order ]&& : || order="normal"
+              [ $lapsDate ]&& : || lapsDate="1950-2020"
+              ./date.sh $longueurMAXDate $dict $casef $order $lapsDate
+              exit 0
+          else
+              echo "bad -l arguments must be year+since-future+year"
+              exit 1
+          fi
+    else
+          echo "bad -b arguments must be 3 to 8 and you can sticks them like 345"
+          exit 1
+    fi 
 fi
 
 if [ $nb ]
