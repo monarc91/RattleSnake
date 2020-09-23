@@ -1,30 +1,48 @@
 #!/bin/bash
-    #--------------------------------------------------------#
-    #          ____   ____.__                                # 
-    #          \   \ /   /|__|_____   ___________            #
-    #           \   Y   / |  \____ \_/ __ \_  __ \           #
-    #            \     /  |  |  |_| |  ___/|  | \/           #
-    #             \___/   |__|   __/ \_____\__|              #
-    #                        |__|                            #
-    #                                                        #
-    #========================================================#
-    #   viper.sh                                             #
-    #   VIPER to accommodate dictionnary                     #
-    #   Author: Monarc(Marc Segur)                           #
-    #   Contact: pc-mac@mail.com                             # 
-    #   Date: 15 september 2020                              #
-    #   Version: 0.8.0                                       #
-    #   Licence:  GPL3                                       #
-    #________________________________________________________#
+    #--------------------------------------------------------------------------#
+    #                __    __  .__                               __            #
+    # ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______   #
+    # \_  __ \__  \\   __\   __\  | /  __ \ /  ___//    \\__  \ |  |/ /  __ \  #
+    #  |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/  #
+    #  |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____> #
+    #                                                                          #
+    #                                                                          #
+    #==========================================================================#
+    #   viper.sh                                                               #
+    #   VIPER to accommodate dictionnary                                       #
+    #   Author: Monarc(Marc Segur)                                             #
+    #   Contact: pc-mac@mail.com                                               # 
+    #   Date: 15 september 2020                                                #
+    #   Version: 0.8.0                                                         #
+    #   Licence:  GPL3                                                         #
+    #   Copyright: Monarc(c)2020                                               #
+    #__________________________________________________________________________#
+
+    # This program (RattleSnake) is free software: you can redistribute it
+    # and/or modify it under the terms of the GNU General Public License 
+    # as published by the Free Software Foundation, either version 3 of the License,
+    # or (at your option) any later version.
+
+    # This program is distributed in the hope that it will be useful,
+    # but WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    # GNU General Public License for more details.
+
+    # You should have received a copy of the GNU General Public License
+    # along with this program(RattleSnake).
+    # If not, see <https://www.gnu.org/licenses/>.
 
 
-while getopts ":c:o:f:d:n:t:k:b:" opt; do
+while getopts ":c:o:f:d:n:t:k:b:l:" opt; do
     case ${opt} in
         c )
           casef="${OPTARG}"
           ;;
         b )
           longueurMAXDate="${OPTARG}"
+          ;;
+        l )
+          lapsDate="${OPTARG}"
           ;;
         k )
           numberTOAdd="${OPTARG}"
@@ -42,6 +60,11 @@ while getopts ":c:o:f:d:n:t:k:b:" opt; do
           ;;
         d )
           dict=${OPTARG}
+          if [[ ! -f $dict ]]
+          then 
+          echo "-d no such file (not exist)"
+          exit 1
+          fi
           ;;
         n )
           nb=${OPTARG}
@@ -51,31 +74,33 @@ while getopts ":c:o:f:d:n:t:k:b:" opt; do
       
         \? )
           echo    " Invalid Option: -$OPTARG" 1>&2
-          echo    " #==================================================================================#"
-          echo -e " #   Usage: ./viper.sh -d listOFWords.txt <options>                                 #"
-          echo -e " #   -d <dictionnary> list of words                                                 #"
-          echo -e " #   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                        #" 
-          echo -e " #   -o <order> normal <or> revert <or> all                                         #"
-          echo -e " #   -t french department like 91 for all 91xxx zipcodes or a fixed longer number   #"
-          echo -e " #    for a unique number to add                                                    #"
-          echo -e " #   -n <speed in k/s> Calcul the number of possibility and time to test them       #"
-          echo -e " #__________________________________________________________________________________#\n"
+          tput setaf 3  
+          echo    "#===============================================================================#"
+          echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
+          echo -e "#   -d <dictionnary> list of words                                              #"
+          echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
+          echo -e "#   -o <order> normal <or> revert <or> all                                      #"
+          echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
+          echo -e "#    number for a unique number to add                                          #"
+          echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
+          echo -e "#_______________________________________________________________________________#\n"
+          tput setaf 7
           exit 1
           ;;
     esac
 done
 shift $((OPTIND -1))
 tput setaf 2
-       echo "                       ____   ____.__                      "                  
-       echo "                       \   \ /   /|__|_____   ___________  "
-       echo "                        \   Y   / |  \____ \_/ __ \_  __ \ "
-       echo "                         \     /  |  |  |_| |  ___/|  | \/ "
-       echo "                          \___/   |__|   __/ \_____\__|    "
-       echo "Licence: GPL3                        |__|                  "
-       echo "Viper par Monarc(Marc Segur)               Version: 0.8.0  "
-       echo "-----------------------------------------------------------"
-
-
+echo "                  __    __   __                               __              "          
+echo "   ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______     "
+echo "   \_  __ \__  \\\\   __\   __\  |_/  __ \ /  ___//    \\\\__  \ |  |/ /  __ \\";tput setaf 5
+echo "    |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/    ";tput setaf 3
+echo "    |__|  (______/__|  |__| |____/\_____>______>___|  (______/__|__\\\\_____> ";tput setaf 4
+echo ""
+echo " Licence: GPL3                                                              "
+echo " Viper par Monarc(Marc Segur)                                               "
+echo " Copyright: 2020                                               Version: 0.8.0 "
+echo "------------------------------------------------------------------------------"
 tput setaf 7
 
 if [[ ! -z $longueurMAXDate && ! -z $numberTOAdd ]]
@@ -88,13 +113,25 @@ then
     echo "dont use -t option with -b dates otions"
     exit 0
 fi
+if [[ ! -z $longueurMAXDate &&  -z $lapsDate ]]
+then
+    echo "Use -l \"1950-1952\" option with -b dates options"
+    exit 0
+fi
+if [[ ! -z $lapsDate &&  -z $longueurMAXDate ]]
+then
+    echo "Use -b 3 or 345 or 456 for multiple length of dates with -l dates laps options only"
+    exit 0
+fi
 if [[ ! -z $longueurMAXDate && ! -z $dict ]]
 then
     [ $casef ]&& : || casef=4
     [ $order ]&& : || order="normal"
-    ./date.sh $longueurMAXDate $dict $casef $order
+    [ $lapsDate ]&& : || lapsDate="1950-2020"
+    ./date.sh $longueurMAXDate $dict $casef $order $lapsDate
     exit 0
 fi
+
 if [ $nb ]
 then
     nbWords=`< $dict wc -l`
@@ -113,16 +150,17 @@ if [ "$dict" ]
 then
     :
   else
-      
-    echo    " #==================================================================================#"
-    echo -e " #   Usage: ./viper.sh -d listOFWords.txt <options>                                 #"
-    echo -e " #   -d <dictionnary> list of words                                                 #"
-    echo -e " #   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                        #" 
-    echo -e " #   -o <order> normal <or> revert <or> all                                         #"
-    echo -e " #   -t french department like 91 for all 91xxx zipcodes or a fixed longer number   #"
-    echo -e " #    for a unique number to add                                                    #"
-    echo -e " #   -n <speed in k/s> Calcul the number of possibility and time to test them       #"
-    echo -e " #__________________________________________________________________________________#\n"
+    tput setaf 3  
+    echo    "#===============================================================================#"
+    echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
+    echo -e "#   -d <dictionnary> list of words                                              #"
+    echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
+    echo -e "#   -o <order> normal <or> revert <or> all                                      #"
+    echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
+    echo -e "#    number for a unique number to add                                          #"
+    echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
+    echo -e "#_______________________________________________________________________________#\n"
+    tput setaf 7
     exit 1
 fi
 
@@ -142,7 +180,7 @@ terr() {
     
     done < "$departements"
 }
-
+echo $dept
 if [[ ! -z $dept ]]
 then
   if [[ ${#dept} > 2 ]]
