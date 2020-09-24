@@ -128,7 +128,7 @@ then
     [ $casef ]&& : || casef=4
     [ $order ]&& : || order="normal"
     [ $lapsDate ]&& : || lapsDate="1950-2020"
-    ./date.sh $longueurMAXDate $dict $casef $order $lapsDate
+    ./dates.sh $longueurMAXDate $dict $casef $order $lapsDate
     exit 0
 fi
 
