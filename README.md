@@ -22,7 +22,7 @@ And **_-b_** is an option for possibles **dates** [1945-2020] (only french's for
       |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____>
       
   #### Usage: ./rtlsnake.sh -d listOFWords.txt <options>                                 
-      -d _<dictionnary>_ **list** of words 
+      d _<dictionnary>_ **list** of words 
       -k **<numbers to add>** like 2000 for 1..2000 (_default 99_)
       -b **<dates>** all dates possible with (3,4,5,6,7,8 numbers or **9** _for ALL_) 
          > ex: **_./rtlsnake.sh -b 4 -l 1950-2001 -c 1 -o normal_**
