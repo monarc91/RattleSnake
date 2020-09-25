@@ -150,7 +150,7 @@ then
                       ./dateUS.sh $longueurMAXDate $dict $casef $order $lapsDate
                     fi
                   fi
-                  if [ ! -z $modeDate ] # no mode dates
+                  if [[ -z $modeDate ]] # no mode dates
                   then
                     [ $casef ]&& : || casef=4
                     [ $order ]&& : || order="normal"
