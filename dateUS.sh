@@ -8,7 +8,7 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   dateUS.sh is part of viper.sh (rtlsnake.sh RattleSnake)                 #
+    #   dateFR.sh is part of viper.sh (rtlsnake.sh RattleSnake)                #
     #   VIPER to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
@@ -17,6 +17,21 @@
     #   Licence:  GPL3                                                         #
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
+
+    # This file is part of RattleSnake.
+
+    # RattleSnake is free software: you can redistribute it and/or modify
+    # it under the terms of the GNU General Public License as published by
+    # the Free Software Foundation, either version 3 of the License, or
+    # (at your option) any later version.
+
+    # Foobar is distributed in the hope that it will be useful,
+    # but WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    # GNU General Public License for more details.
+
+    # You should have received a copy of the GNU General Public License
+    # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 datey=`date +%Y`
 datey=$((datey+1))
@@ -62,8 +77,6 @@ indexA=0
 dat8()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -73,7 +86,7 @@ dat8()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="$y$m$d"
+        dates1["$indexA"]="$d$m$y"
         indexA=$(($indexA + 1))
         done
     fi
@@ -83,13 +96,13 @@ dat8()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="$y$m$d"
+            dates1["$indexA"]="$d$m$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-        dates1["$indexA"]="$y$m$d"
+        dates1["$indexA"]="$d$m$y"
         indexA=$(($indexA + 1))
         done
         fi
@@ -98,13 +111,13 @@ dat8()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="$y$m$d"
+            dates1["$indexA"]="$d$m$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-        dates1["$indexA"]="$y$m$d"
+        dates1["$indexA"]="$d$m$y"
         indexA=$(($indexA + 1))
         done
         fi
@@ -115,8 +128,6 @@ dat8()
 dat7()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -126,9 +137,9 @@ dat7()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="$y$m${d:1}"
+        dates1["$indexA"]="${d:1}$m$y"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="$y${m:1}$d"
+        dates1["$indexA"]="$d${m:1}$y"
         indexA=$(($indexA + 1))
         done
     fi
@@ -138,17 +149,17 @@ dat7()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="$y$m${d:1}"
+            dates1["$indexA"]="${d:1}$m$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}$d"
+            dates1["$indexA"]="$d${m:1}$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="$y$m${d:1}"
+            dates1["$indexA"]="${d:1}$m$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}$d"
+            dates1["$indexA"]="$d${m:1}$y"
             indexA=$(($indexA + 1))
         done
         fi
@@ -157,17 +168,17 @@ dat7()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="$y$m${d:1}"
+            dates1["$indexA"]="${d:1}$m$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}$d"
+            dates1["$indexA"]="$d${m:1}$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="$y$m${d:1}"
+            dates1["$indexA"]="${d:1}$m$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}$d"
+            dates1["$indexA"]="$d${m:1}$y"
             indexA=$(($indexA + 1))
         done
         fi
@@ -178,8 +189,6 @@ dat7()
 dat6()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -189,9 +198,9 @@ dat6()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${y:2}$m$d"
+        dates1["$indexA"]="${d}$m${y:2}"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="$y${m:1}${d:1}"
+        dates1["$indexA"]="${d:1}${m:1}$y"
         indexA=$(($indexA + 1))
         done
     fi
@@ -201,17 +210,17 @@ dat6()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${y:2}$m$d"
+            dates1["$indexA"]="${d}$m${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}${d:1}"
+            dates1["$indexA"]="${d:1}${m:1}$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${y:2}$m$d"
+            dates1["$indexA"]="${d}$m${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}${d:1}"
+            dates1["$indexA"]="${d:1}${m:1}$y"
             indexA=$(($indexA + 1))
         done
         fi
@@ -220,30 +229,27 @@ dat6()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${y:2}$m$d"
+            dates1["$indexA"]="${d}$m${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}${d:1}"
+            dates1["$indexA"]="${d:1}${m:1}$y"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${y:2}$m$d"
+            dates1["$indexA"]="${d}$m${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}${d:1}"
+            dates1["$indexA"]="${d:1}${m:1}$y"
             indexA=$(($indexA + 1))
         done
         fi
     fi
     done
     done
-} 
-
-dat5()                
+}
+dat5()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -253,11 +259,13 @@ dat5()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${y:2}${m:1}$d"
+        dates1["$indexA"]="${d}${m:1}${y:2}"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="$y${m:1}"
+        dates1["$indexA"]="${m:1}$y"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="${y:2}${m}${d:1}"
+        dates1["$indexA"]="${d:1}${m}${y:2}"
+        indexA=$(($indexA + 1))
+        dates1["$indexA"]="${m:1}${y}"
         indexA=$(($indexA + 1))
         done
     fi
@@ -267,21 +275,25 @@ dat5()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${y:2}${m:1}$d"
+            dates1["$indexA"]="${d}${m:1}${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}"
+            dates1["$indexA"]="${m:1}$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${y:2}${m}${d:1}"
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${y:2}${m:1}$d"
+            dates1["$indexA"]="${d}${m:1}${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}"
+            dates1["$indexA"]="${m:1}$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${y:2}${m}${d:1}"
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
             indexA=$(($indexA + 1))
         done
         fi
@@ -290,34 +302,36 @@ dat5()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${y:2}${m:1}$d"
+            dates1["$indexA"]="${d}${m:1}${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}"
+            dates1["$indexA"]="${m:1}$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${y:2}${m}${d:1}"
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${y:2}${m:1}$d"
+            dates1["$indexA"]="${d}${m:1}${y:2}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$y${m:1}"
+            dates1["$indexA"]="${m:1}$y"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${y:2}${m}${d:1}"
+            dates1["$indexA"]="${d:1}${m}${y:2}"
+            indexA=$(($indexA + 1))
+            dates1["$indexA"]="${m:1}${y}"
             indexA=$(($indexA + 1))
         done
         fi
     fi
     done
     done
-}} #                  ||
-# mettre en US format \/
-dat4()# $y$m$d
+}
+
+dat4()
 {   
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -399,8 +413,6 @@ dat4()# $y$m$d
 dat3()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
 
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -464,12 +476,7 @@ dat3()
     done
     done
 }
-# if isleap 1981
-# then
-#     echo "oui marc is leap"
-#   else 
-#     echo "non pas leap year"
-# fi
+
 data=$1
 lapsDate=$5
 lgdt=${#data}
@@ -538,26 +545,14 @@ fi
 
 # function year completes
 # dat3;dat5;dat4;dat6;dat7;dat8
+
 dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
-# poss=0
+
 unset dates1
-
-
-# for h in ${dates[@]}
-#     do
-#         echo $h
-#         poss=$(($poss+1))
-#     done
-# echo "Enfin finit nombre de possibilités en all chiffres: $possibilities"
-# echo "possibilités une fois triées: $poss"
-
-
-
 
 order=$4
 case=$3
 dict=$2
-# echo " $dict est le dico $case est la casse et $order est l'ordre, hello monarc!"
 
 doWord(){
     file="$dict"
