@@ -1,13 +1,9 @@
 # _Viper_ will change her name for _rattlesnake.sh_ now ("rtlsnake.sh")
 
 this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
-
 with lower Camel and UPPER cases (word,Word and WORD with -c option).
-
 -t is an option to test with all zipcodes of a french department or simply add a custom longer number.
-
 prenoms.txt is a dictionary's names for france (-d option).
-
 And -b is an option for possibles dates [1945-2020] (only french's format for the moment) use it with -l option 
 
 example: -l 1950-2020
