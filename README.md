@@ -1,5 +1,5 @@
 # _Viper_ will change her name for _rattlesnake.sh_ now ("rtlsnake.sh")
-        ![] (crotalep.png)
+        ![] (/crotalep.png)
         <img src="https://w7.pngwing.com/pngs/653/250/png-transparent-rattlesnake-rattlesnake-mammal-animals-carnivoran.png"/>
 this script add some number to words with aircrack like : _1word word1 to 99word and word99_ (with -o order option).
 with **_lower, Camel_ and _UPPER_ cases** (word,Word and WORD with _-c option_).
