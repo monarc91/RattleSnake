@@ -37,10 +37,10 @@ And **_-b_** is an option for possibles **dates** [1945-2020] (only french's for
     
    ##### command:
         
-        * ./rtlsnake.sh -d listWords.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap <for all possibilities>
-        * ./rtlsnake.sh -d listWords.txt -k 8600 |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
-        * ./rtlsnake.sh -d list.txt -c 2 -o all |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
-        * ./rtlsnake.sh -d list.txt -b 34 -o all -c 1 -l 1995-2006 |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+  * ./rtlsnake.sh -d listWords.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap <for all possibilities>
+  * ./rtlsnake.sh -d listWords.txt -k 8600 |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+  * ./rtlsnake.sh -d list.txt -c 2 -o all |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+  * ./rtlsnake.sh -d list.txt -b 34 -o all -c 1 -l 1995-2006 |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
         
 ## Crack
 simple bash program add some number to words with aircrack like : 1word word1 to 99word and word99.
