@@ -71,8 +71,6 @@ while getopts ":c:o:f:d:n:t:k:b:l:m:" opt; do
           ;;
         n )
           nb=${OPTARG}
-          echo " coming soon"
-          exit 0
           ;;
       
         \? )
@@ -103,11 +101,36 @@ echo "    |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/
 echo "    |__|  (______/__|  |__| |____/\_____>______>___|  (______/__|__\\\\_____> ";tput setaf 4
 echo ""
 echo " Licence: GPL3                                                              "
-echo " Viper par Monarc(Marc Segur)                                               "
+echo " RattleSnake par Monarc(Marc Segur)                                               "
 echo " Copyright: 2020                                               Version: 0.8.0 "
 echo "------------------------------------------------------------------------------"
 tput setaf 7
-
+if [[ $nb && $dict ]]
+then
+    nbWords=`< $dict wc -l`
+    echo "nombre de mots dans $dict: $nbWords"
+    if [ "$casef" ] && [ !"$order" ]
+    then
+        :
+      else
+        result=$(($nbWords*303))
+        lenR=${#result}
+        if [ $lenR -gt 3 ]
+        then
+            resultM=$(($result/$nb))
+            resultT=$(($resultM/60))
+            tput setaf 3
+            echo "* $result possibilities! and $resultT mn at $nb k/s"
+            tput setaf 7
+            exit 0
+          else
+            tput setaf 3
+            echo "* $result possibilities! and $(($result/$nb)) seconds at $nb k/s"
+            tput setaf 7
+            exit 0
+        fi
+    fi
+fi
 if [[ ! -z $longueurMAXDate && ! -z $numberTOAdd ]]
 then
     echo "dont use -k option with -b dates otions"
@@ -165,20 +188,6 @@ then
               echo "bad -b arguments must be 3 to 8 and you can sticks them like 345"
           fi
     exit 0
-fi
-
-if [ $nb ]
-then
-    nbWords=`< $dict wc -l`
-    echo "nombre de mots dans $dict: $nbWords"
-    if [ "$casef" ] && [ !"$order" ]
-    then
-        :
-      else
-        result=$(($nbWords*9))
-        echo " $result possibilities! at $nb k/s"
-        exit 0
-    fi
 fi
 
 if [ "$dict" ]
@@ -527,4 +536,3 @@ doWord(){
 
 doWord "$dict" "$casef" "$order" "$dept" "$numberTOAdd"
 
-# le crime est toujours punit!
