@@ -8,7 +8,7 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   dateFR.sh is part of viper.sh (rtlsnake.sh RattleSnake)                #
+    #   dateUS.sh is part of viper.sh (rtlsnake.sh RattleSnake)                 #
     #   VIPER to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
@@ -17,7 +17,7 @@
     #   Licence:  GPL3                                                         #
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
-
+    
     # This file is part of RattleSnake.
 
     # RattleSnake is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 
     # You should have received a copy of the GNU General Public License
     # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
-
+    
 datey=`date +%Y`
 datey=$((datey+1))
 longueurMaxDate=$1
@@ -86,7 +86,7 @@ dat8()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="$d$m$y"
+        dates1["$indexA"]="$y$m$d"
         indexA=$(($indexA + 1))
         done
     fi
@@ -96,13 +96,13 @@ dat8()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="$d$m$y"
+            dates1["$indexA"]="$y$m$d"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-        dates1["$indexA"]="$d$m$y"
+        dates1["$indexA"]="$y$m$d"
         indexA=$(($indexA + 1))
         done
         fi
@@ -111,13 +111,13 @@ dat8()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="$d$m$y"
+            dates1["$indexA"]="$y$m$d"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-        dates1["$indexA"]="$d$m$y"
+        dates1["$indexA"]="$y$m$d"
         indexA=$(($indexA + 1))
         done
         fi
@@ -137,9 +137,9 @@ dat7()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${d:1}$m$y"
+        dates1["$indexA"]="$y$m${d:1}"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="$d${m:1}$y"
+        dates1["$indexA"]="$y${m:1}$d"
         indexA=$(($indexA + 1))
         done
     fi
@@ -149,17 +149,17 @@ dat7()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${d:1}$m$y"
+            dates1["$indexA"]="$y$m${d:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$d${m:1}$y"
+            dates1["$indexA"]="$y${m:1}$d"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d:1}$m$y"
+            dates1["$indexA"]="$y$m${d:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$d${m:1}$y"
+            dates1["$indexA"]="$y${m:1}$d"
             indexA=$(($indexA + 1))
         done
         fi
@@ -168,17 +168,17 @@ dat7()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${d:1}$m$y"
+            dates1["$indexA"]="$y$m${d:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$d${m:1}$y"
+            dates1["$indexA"]="$y${m:1}$d"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d:1}$m$y"
+            dates1["$indexA"]="$y$m${d:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="$d${m:1}$y"
+            dates1["$indexA"]="$y${m:1}$d"
             indexA=$(($indexA + 1))
         done
         fi
@@ -198,9 +198,9 @@ dat6()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${d}$m${y:2}"
+        dates1["$indexA"]="${y:2}$m$d"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="${d:1}${m:1}$y"
+        dates1["$indexA"]="$y${m:1}${d:1}"
         indexA=$(($indexA + 1))
         done
     fi
@@ -210,17 +210,17 @@ dat6()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${d}$m${y:2}"
+            dates1["$indexA"]="${y:2}$m$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m:1}$y"
+            dates1["$indexA"]="$y${m:1}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d}$m${y:2}"
+            dates1["$indexA"]="${y:2}$m$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m:1}$y"
+            dates1["$indexA"]="$y${m:1}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
@@ -229,25 +229,26 @@ dat6()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${d}$m${y:2}"
+            dates1["$indexA"]="${y:2}$m$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m:1}$y"
+            dates1["$indexA"]="$y${m:1}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d}$m${y:2}"
+            dates1["$indexA"]="${y:2}$m$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m:1}$y"
+            dates1["$indexA"]="$y${m:1}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
     fi
     done
     done
-}
-dat5()
+} 
+
+dat5()                
 {
     laps=$1
     
@@ -259,13 +260,11 @@ dat5()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${d}${m:1}${y:2}"
+        dates1["$indexA"]="${y:2}${m:1}$d"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="${m:1}$y"
+        dates1["$indexA"]="$y${m:1}"
         indexA=$(($indexA + 1))
-        dates1["$indexA"]="${d:1}${m}${y:2}"
-        indexA=$(($indexA + 1))
-        dates1["$indexA"]="${m:1}${y}"
+        dates1["$indexA"]="${y:2}${m}${d:1}"
         indexA=$(($indexA + 1))
         done
     fi
@@ -275,25 +274,21 @@ dat5()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${d}${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}$y"
+            dates1["$indexA"]="$y${m:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}${y:2}"
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}${y}"
+            dates1["$indexA"]="${y:2}${m}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d}${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}$y"
+            dates1["$indexA"]="$y${m:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}${y:2}"
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}${y}"
+            dates1["$indexA"]="${y:2}${m}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
@@ -302,37 +297,33 @@ dat5()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${d}${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}$y"
+            dates1["$indexA"]="$y${m:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}${y:2}"
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}${y}"
+            dates1["$indexA"]="${y:2}${m}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${d}${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}$d"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}$y"
+            dates1["$indexA"]="$y${m:1}"
             indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}${y:2}"
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${m:1}${y}"
+            dates1["$indexA"]="${y:2}${m}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
     fi
     done
     done
-}
+}  
 
 dat4()
 {   
     laps=$1
-    
+
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
     for m in {01..12}
@@ -675,5 +666,4 @@ doWord(){
 }
 
 doWord "$dict" "$case" "$order"
-
-
+exit 0
