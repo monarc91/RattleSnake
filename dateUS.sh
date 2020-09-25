@@ -531,6 +531,15 @@ else
         then
             dat8 $lapsDate
         fi
+        if [[ ${data} == 9 ]]
+        then
+            dat3 $lapsDate
+            dat4 $lapsDate
+            dat5 $lapsDate
+            dat6 $lapsDate
+            dat7 $lapsDate
+            dat8 $lapsDate
+        fi
 fi
 
 
