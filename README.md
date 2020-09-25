@@ -1,4 +1,4 @@
-# __Viper__ will change her name in rattlesnake.sh now
+# _Viper_ will change her name for _rattlesnake.sh_ now ("rtlsnake.sh")
 
 this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
 
@@ -14,7 +14,7 @@ example: -l 1950-2020
 
 please use rtlsnake because I change the name to RattleSnake (rtlsnake.sh)
     
-# rtlsnake.sh
+## rtlsnake.sh
 
                     __    __  .__                               __            
      ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______   
@@ -22,7 +22,7 @@ please use rtlsnake because I change the name to RattleSnake (rtlsnake.sh)
       |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/  
       |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____>
       
-  # Usage: ./rtlsnake.sh -d listOFWords.txt <options>                                 
+  #### Usage: ./rtlsnake.sh -d listOFWords.txt <options>                                 
      -d <dictionnary> list of words 
      -k number to add like 2000 for 1..2000 (default 99)
      -b date all dates possible with (3,4,5,6,7,8 numbers or 9 for ALL) ex: ./viper.sh -b 4 -c 1 -o normal
@@ -33,7 +33,7 @@ please use rtlsnake because I change the name to RattleSnake (rtlsnake.sh)
      -t for france add department fixed like 91230 or all department's zip of 91 (default None)
      -n <speed in k/s> Calcul the number of possibility and time to test them (coming soon)
     
-   # command:
+   ##### command:
         ./rtlsnake.sh -d listWords.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap <for all possibilities>
         ./rtlsnake.sh -d listWords.txt -k 8600 |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
         ./rtlsnake.sh -d list.txt -c 2 -o all |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
