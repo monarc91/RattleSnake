@@ -6,7 +6,7 @@ this script add some number to words with aircrack like : _1word word1 to 99word
 with **_lower, Camel_ and _UPPER_ cases** (word,Word and WORD with _-c option_).  
 **_-t_** is an option to test with all zipcodes of a french department or simply add a custom longer number.  
 prenoms.txt is a dictionary's names for france (_-d option_).  
-And **_-b_** is an option for possibles **dates** [1945-2020] (only french's format for the moment) use it with _-l option_ 
+And **_-b_** is an option for possibles **dates** [1945-2020] (only french's format for the moment) use it with _ **-l** option_ 
 (optionnal -m to modify **order** to _**1**:ddmmyy or **2**:yymmdd_)    
 
 > **example:** -_l 1950-2020_
