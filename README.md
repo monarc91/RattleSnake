@@ -1,22 +1,23 @@
 # _Viper_ will change her name for _rattlesnake.sh_ now ("rtlsnake.sh")
 
-this script add some number to words with aircrack like : 1word word1 to 99word and word99 (with -o order option).
-with lower Camel and UPPER cases (word,Word and WORD with -c option).
--t is an option to test with all zipcodes of a french department or simply add a custom longer number.
-prenoms.txt is a dictionary's names for france (-d option).
-And -b is an option for possibles dates [1945-2020] (only french's format for the moment) use it with -l option 
+this script add some number to words with aircrack like : _1word word1 to 99word and word99_ (with -o order option).
+with **_lower, Camel_ and _UPPER_ cases** (word,Word and WORD with _-c option_).
+**_-t_** is an option to test with all zipcodes of a french department or simply add a custom longer number.
+prenoms.txt is a dictionary's names for france (_-d option_).
+And **_-b_** is an option for possibles **dates** [1945-2020] (only french's format for the moment) use it with _-l option_ 
+(optionnal -m to modify **order** to _**1**:ddmmyy or **2**:yymmdd_)
 
-example: -l 1950-2020
+**example:** -_l 1950-2020_
 
-please use rtlsnake because I change the name to RattleSnake (rtlsnake.sh)
+**please** use _rtlsnake.sh_ because I change the name to RattleSnake (**_rtlsnake.sh_**)
     
 ## rtlsnake.sh
 
-                    __    __  .__                               __            
-     ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______   
-     \_  __ \__  \\   __\   __\  | /  __ \ /  ___//    \\__  \ |  |/ /  __ \  
-      |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/  
-      |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____>
+    **                __    __  .__                               __         **   
+    ** ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______**   
+    ** \_  __ \__  \\   __\   __\  | /  __ \ /  ___//    \\__  \ |  |/ /  __ \**  
+    **  |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/ ** 
+    **  |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____>**
       
   #### Usage: ./rtlsnake.sh -d listOFWords.txt <options>                                 
      -d <dictionnary> list of words 
