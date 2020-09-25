@@ -1,8 +1,8 @@
 #!/bin/bash
     #--------------------------------------------------------------------------#
     #                __    __  .__                               __            #
-    # ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______   #
-    # \_  __ \__  \\   __\   __\  | /  __ \ /  ___//    \\__  \ |  |/ /  __ \  #
+    # ____ _______ _/  |__/  |_|  |   ____   ______ ____ _____  |  | __ ____   #
+    # \_  __ \__  \\   __\   __\  | _/ __ \ /  ___//    \\__  \ |  |/ // __ \  #
     #  |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/  #
     #  |__|  (______/__|  |__| |____/\_____>______>___|__(______/__|_ \\_____> #
     #                                                                          #
@@ -19,7 +19,7 @@
     #__________________________________________________________________________#
 
     # This program (RattleSnake) is free software: you can redistribute it
-    # and/or modify it under the terms of the GNU General Public License 
+    # and/or modify it under the terms of the GNU General Public License
     # as published by the Free Software Foundation, either version 3 of the License,
     # or (at your option) any later version.
 
@@ -33,13 +33,16 @@
     # If not, see <https://www.gnu.org/licenses/>.
 
 
-while getopts ":c:o:f:d:n:t:k:b:l:" opt; do
+while getopts ":c:o:f:d:n:t:k:b:l:m:" opt; do
     case ${opt} in
         c )
           casef="${OPTARG}"
           ;;
         b )
           longueurMAXDate="${OPTARG}"
+          ;;
+        m )
+          modeDate="${OPTARG}"
           ;;
         l )
           lapsDate="${OPTARG}"
@@ -75,17 +78,17 @@ while getopts ":c:o:f:d:n:t:k:b:l:" opt; do
         \? )
           echo    " Invalid Option: -$OPTARG" 1>&2
           tput setaf 3  
-            echo    "#===============================================================================#"
-            echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
-            echo -e "#   -d <dictionnary> list of words                                              #"
-            echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
-            echo -e "#   -o <order> normal <or> revert <or> all                                      #"
-            echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
-            echo -e "#    number for a unique number to add                                          #"
-            echo -e "#   -b for multipe number ex 357 for 3, 5 and 7 formating (use with -l)         #"
-            echo -e "#   -l laps of dates ex: -l 1945-2000 for dates since 1945 to 2000              #"
-            echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
-            echo -e "#_______________________________________________________________________________#\n"
+          echo -e "#===============================================================================#"
+          echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #" 
+          echo -e "#   -d <dictionnary> list of words                                              #"
+          echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #"
+          echo -e "#   -o <order> normal <or> revert <or> all                                      #"
+          echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
+          echo -e "#    number for a unique number to add                                          #"
+          echo -e "#   -b for multipe number ex 357 for 3, 5 and 7 formating (use with -l)         #"
+          echo -e "#   -l laps of dates ex: -l 1945-2000 for dates since 1945 to 2000              #"
+          echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
+          echo -e "#_______________________________________________________________________________#"
           tput setaf 7
           exit 1
           ;;
@@ -94,8 +97,8 @@ done
 shift $((OPTIND -1))
 tput setaf 2
 echo "                  __    __   __                               __              "          
-echo "   ____________ _/  |__/  |_|  |  _____   ______ ____ _____  |  | _______     "
-echo "   \_  __ \__  \\\\   __\   __\  |_/  __ \ /  ___//    \\\\__  \ |  |/ /  __ \\";tput setaf 5
+echo "   ____________ _/  |__/  |_|  |   ____   ______ ____ _____  |  | __ ____     "
+echo "   \_  __ \__  \\\\   __\   __\  | _/ __ \ /  ___//    \\\\__  \ |  |/ // __ \\";tput setaf 5
 echo "    |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/    ";tput setaf 3
 echo "    |__|  (______/__|  |__| |____/\_____>______>___|  (______/__|__\\\\_____> ";tput setaf 4
 echo ""
@@ -127,21 +130,41 @@ then
 fi
 if [[ ! -z $longueurMAXDate && ! -z $dict ]] && [[ ! -z $lapsDate ]]
 then
-    if [[ $longueurMAXDate =~ ^[0-9]+$ ]]; then
-          if [[ $lapsDate =~ ^[0-9]{4}-[0-9]{4}$ ]]; then
-              [ $casef ]&& : || casef=4
-              [ $order ]&& : || order="normal"
-              [ $lapsDate ]&& : || lapsDate="1950-2020"
-              ./dates.sh $longueurMAXDate $dict $casef $order $lapsDate
-              exit 0
+    
+          if [[ $longueurMAXDate =~ ^[0-9]+$ ]]; then
+              if [[ $lapsDate =~ ^[0-9]{4}-[0-9]{4}$ ]]; then
+                  if [ $modeDate ]
+                  then
+                    if [ $modeDate -eq 1 ] # mode ddmmyy
+                    then
+                      [ $casef ]&& : || casef=4
+                      [ $order ]&& : || order="normal"
+                      [ $lapsDate ]&& : || lapsDate="1950-2020"
+                      ./dateFR.sh $longueurMAXDate $dict $casef $order $lapsDate
+                    fi
+                    if [ $modeDate -eq 2 ] # mode yymmdd
+                    then
+                      [ $casef ]&& : || casef=4
+                      [ $order ]&& : || order="normal"
+                      [ $lapsDate ]&& : || lapsDate="1950-2020"
+                      ./dateUS.sh $longueurMAXDate $dict $casef $order $lapsDate
+                    fi
+                  fi
+                  if [ ! -z $modeDate ] # no mode dates
+                  then
+                    [ $casef ]&& : || casef=4
+                    [ $order ]&& : || order="normal"
+                    [ $lapsDate ]&& : || lapsDate="1950-2020"
+                    ./dateFR.sh $longueurMAXDate $dict $casef $order $lapsDate
+                  fi
+                    
+              else
+                  echo "bad -l arguments must be year+since-future+year"
+              fi
           else
-              echo "bad -l arguments must be year+since-future+year"
-              exit 1
+              echo "bad -b arguments must be 3 to 8 and you can sticks them like 345"
           fi
-    else
-          echo "bad -b arguments must be 3 to 8 and you can sticks them like 345"
-          exit 1
-    fi 
+    exit 0
 fi
 
 if [ $nb ]
@@ -163,18 +186,19 @@ then
     :
   else
     tput setaf 3  
-    echo    "#===============================================================================#"
-    echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #"
+    echo -e "#===============================================================================#"
+    echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #" 
     echo -e "#   -d <dictionnary> list of words                                              #"
-    echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #" 
+    echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #"
     echo -e "#   -o <order> normal <or> revert <or> all                                      #"
     echo -e "#   -t french department like 91 for all 91xxx zipcodes or a fixed longer       #"
     echo -e "#    number for a unique number to add                                          #"
     echo -e "#   -b for multipe number ex 357 for 3, 5 and 7 formating (use with -l)         #"
     echo -e "#   -l laps of dates ex: -l 1945-2000 for dates since 1945 to 2000              #"
     echo -e "#   -n <speed in k/s> Calcul the number of possibility and time to test them    #"
-    echo -e "#_______________________________________________________________________________#\n"
+    echo -e "#_______________________________________________________________________________#"
     tput setaf 7
+    echo "Use with -d dictionnary option please"
     exit 1
 fi
 
