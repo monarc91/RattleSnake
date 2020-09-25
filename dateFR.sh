@@ -8,7 +8,7 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   dates.sh is part of viper.sh (rtlsnake.sh RattleSnake)                 #
+    #   dateFR.sh is part of viper.sh (rtlsnake.sh RattleSnake)                #
     #   VIPER to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
@@ -77,8 +77,6 @@ indexA=0
 dat8()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -130,8 +128,6 @@ dat8()
 dat7()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -193,8 +189,6 @@ dat7()
 dat6()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -256,8 +250,6 @@ dat6()
 dat5()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -340,8 +332,6 @@ dat5()
 dat4()
 {   
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
     
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -423,8 +413,6 @@ dat4()
 dat3()
 {
     laps=$1
-    # D=${laps:0:4}
-    # A=${laps:5}
 
     for (( y=${laps:0:4};y < ${laps:5}+1; y++ ))
     do
@@ -488,12 +476,7 @@ dat3()
     done
     done
 }
-# if isleap 1981
-# then
-#     echo "oui marc is leap"
-#   else 
-#     echo "non pas leap year"
-# fi
+
 data=$1
 lapsDate=$5
 lgdt=${#data}
@@ -562,26 +545,14 @@ fi
 
 # function year completes
 # dat3;dat5;dat4;dat6;dat7;dat8
+
 dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
-# poss=0
+
 unset dates1
-
-
-# for h in ${dates[@]}
-#     do
-#         echo $h
-#         poss=$(($poss+1))
-#     done
-# echo "Enfin finit nombre de possibilités en all chiffres: $possibilities"
-# echo "possibilités une fois triées: $poss"
-
-
-
 
 order=$4
 case=$3
 dict=$2
-# echo " $dict est le dico $case est la casse et $order est l'ordre, hello monarc!"
 
 doWord(){
     file="$dict"
