@@ -594,9 +594,8 @@ doWord(){
         fi
         for k in ${dates[@]}
         do
-        if [[ $l == 0 ]];then
             echo "$k"
-        fi
+       
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
             echo "${line}${k}"
