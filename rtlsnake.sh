@@ -8,12 +8,12 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   rtlsnake.sh                                                            #
-    #   RattleSnake to accommodate dictionnary                                 #
+    #   viper.sh                                                               #
+    #   VIPER to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
-    #   Version: 0.9.2                                                         #
+    #   Version: 0.9.0                                                         #
     #   Licence:  GPL3                                                         #
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
@@ -93,23 +93,23 @@ while getopts ":c:o:f:d:n:t:k:b:l:m:" opt; do
     esac
 done
 shift $((OPTIND -1))
-tput setaf 2
-echo "                  __    __   __                               __              "          
-echo "   ____________ _/  |__/  |_|  |   ____   ______ ____ _____  |  | __ ____     "
-echo "   \_  __ \__  \\\\   __\   __\  | _/ __ \ /  ___//    \\\\__  \ |  |/ // __ \\";tput setaf 5
-echo "    |  | \// __ \|  |  |  | |  |_\  ___/ \___ \|   |  \/ __ \|    <\  ___/    ";tput setaf 3
-echo "    |__|  (______/__|  |__| |____/\_____>______>___|  (______/__|__\\\\_____> ";tput setaf 4
-echo ""
-echo " Licence: GPL3                                                              "
-echo " RattleSnake par Monarc(Marc Segur)                                               "
-echo " Copyright: 2020                                               Version: 0.9.2 "
-echo "------------------------------------------------------------------------------"
-tput setaf 7
+    tput setaf 2
+    echo "                  __    __   __                              __                  "          
+    echo "   ____________ _/  |__/  |_|  |  _____  ______ ____ _____  |  | __ ____         "
+    echo "   \_  __ \__  \\\\   __\   __\  | /  __ \/  ___//    \\\\__  \ |  |/ // __ \\   ";tput setaf 5
+    echo "    |  | \// __ \|  |  |  | |  |_\\  ___/\___ \|   |  \/ __ \|    <\  ___/       ";tput setaf 3
+    echo "    |__|  (______/__|  |__| |____/\\_____>_____>___| _(______/__|__\\\\____>     ";tput setaf 6
+    echo "                                                                                 "
+    echo " Licence: GPL3                                                                   "
+    echo " RattleSnake par Monarc(Marc Segur)                                              "
+    echo " Copyright: Monarc 2020                                            Version: 0.9.2"
+    echo "---------------------------------------------------------------------------------"
+    tput setaf 7
 if [[ $nb && $dict ]]
 then
     nbWords=`< $dict wc -l`
     echo "nombre de mots dans $dict: $nbWords"
-    if [ "$casef" ] && [ !"$order" ]
+    if [ "$casef" ] && [ ! "$order" ]
     then
         :
       else
@@ -172,6 +172,13 @@ then
                       [ $lapsDate ]&& : || lapsDate="1950-2020"
                       ./dateUS.sh $longueurMAXDate $dict $casef $order $lapsDate
                     fi
+                    if [ $modeDate -eq 3 ] # mode yymmdd
+                    then
+                      [ $casef ]&& : || casef=4
+                      [ $order ]&& : || order="normal"
+                      [ $lapsDate ]&& : || lapsDate="1950-2020"
+                      ./dateMO.sh $longueurMAXDate $dict $casef $order $lapsDate
+                    fi
                   fi
                   if [[ -z $modeDate ]] # no mode dates
                   then
@@ -230,7 +237,7 @@ terr() {
 echo $dept
 if [[ ! -z $dept ]]
 then
-  if [[ ${#dept} > 2 ]]
+  if (( ${#dept} > 2 )) 
   then
     :
    else
@@ -248,7 +255,8 @@ doWord(){
     while IFS= read -r line
     do
         length=${#line}
-        majInit=`echo ${line:0:1} |tr '[:lower:]' '[:upper:]'`
+        # majInit=`echo ${line:0:1} |tr '[:lower:]' '[:upper:]'` (source shellcheck.net)
+        majInit=$(echo "${line:0:1}" |tr '[:lower:]' '[:upper:]')
         maj=`echo ${line} |tr '[:lower:]' '[:upper:]'`
         if  [[ $cas -eq 1 && -z "$terre" ]] 
         then
@@ -535,4 +543,4 @@ doWord(){
 }
 
 doWord "$dict" "$casef" "$order" "$dept" "$numberTOAdd"
-
+exit 0
