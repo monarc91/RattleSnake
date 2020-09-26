@@ -413,10 +413,9 @@ dat3()
     then
         for d in {01..31}
         do
-        dates1["$indexA"]="${m:1}${y:2}"
+        dates1["$indexA"]="${y:2}${m:1}"
         indexA=$(($indexA + 1))
-        indexA=$(($indexA + 1))
-        dates1["$indexA"]="${d:1}${m}"
+        dates1["$indexA"]="${m}${d:1}"
         indexA=$(($indexA + 1))
         done
     fi
@@ -426,19 +425,17 @@ dat3()
         then
             for d in {01..29}
             do
-            dates1["$indexA"]="${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}"
             indexA=$(($indexA + 1))
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}"
+            dates1["$indexA"]="${m}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}"
             indexA=$(($indexA + 1))
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}"
+            dates1["$indexA"]="${m}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
@@ -447,19 +444,17 @@ dat3()
         then
             for d in {01..28}
             do
-            dates1["$indexA"]="${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}"
             indexA=$(($indexA + 1))
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}"
+            dates1["$indexA"]="${m}${d:1}"
             indexA=$(($indexA + 1))
             done
         else
         for d in {01..30}
         do
-            dates1["$indexA"]="${m:1}${y:2}"
+            dates1["$indexA"]="${y:2}${m:1}"
             indexA=$(($indexA + 1))
-            indexA=$(($indexA + 1))
-            dates1["$indexA"]="${d:1}${m}"
+            dates1["$indexA"]="${m}${d:1}"
             indexA=$(($indexA + 1))
         done
         fi
@@ -471,7 +466,7 @@ dat3()
 data=$1
 lapsDate=$5
 lgdt=${#data}
-if [[ $lgdt > 1 ]]
+if (( $lgdt > 1 ))
 then
     for ((i=0;i<$lgdt+1;i++))
     do
@@ -546,7 +541,8 @@ fi
 # function year completes
 # dat3;dat5;dat4;dat6;dat7;dat8
 
-dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
+# dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
+dates=( $(for i in ${dates1[@]}; do echo "$i"; done | sort -u) )
 
 unset dates1
 
