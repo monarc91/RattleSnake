@@ -8,8 +8,8 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   rtlsnake.sh                                                               #
-    #   RattleSnake to accommodate dictionnary                                       #
+    #   rtlsnake.sh                                                            #
+    #   RattleSnake to accommodate dictionnary                                 #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
@@ -102,7 +102,7 @@ echo "    |__|  (______/__|  |__| |____/\_____>______>___|  (______/__|__\\\\___
 echo ""
 echo " Licence: GPL3                                                              "
 echo " RattleSnake par Monarc(Marc Segur)                                               "
-echo " Copyright: 2020                                               Version: 0.8.0 "
+echo " Copyright: 2020                                               Version: 0.9.2 "
 echo "------------------------------------------------------------------------------"
 tput setaf 7
 if [[ $nb && $dict ]]
