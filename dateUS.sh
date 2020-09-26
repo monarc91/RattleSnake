@@ -13,7 +13,7 @@
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
-    #   Version: 0.9.0                                                         #
+    #   Version: 0.9.2                                                         #
     #   Licence:  GPL3                                                         #
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
