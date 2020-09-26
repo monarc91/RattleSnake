@@ -54,13 +54,16 @@ then
     tput setaf 7
     echo -e "install rtlsnake...\n"
 
+    tput civis
     for fil in "${!files[@]}"
     do
         cp "${files[$fil]}" /usr/bin 
         tput setaf 6
         ProgressBar "$(($fil+1))" $_end
-        sleep 0.5
+        echo -ne " Copy file ${files[$fil]}"
+        sleep 0.1
     done
+    tput cnorm
    
     
     tput setaf 3
