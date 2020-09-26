@@ -23,7 +23,7 @@ then
     echo "------------------------------------------------------------------------------"
     tput setaf 7
     echo -e "install rtlsnake...\n"
-    cp *.sh CPFrance.txt /usr/bin
+    cp rtlsnake.sh dateFR.sh dateUS.sh dateMO.sh CPFrance.txt /usr/bin
     echo -e "install rtlsnake DONE.\n"
     tput setaf 6
     echo -e "Now you can run rtlsnake by the command rtlsnake.sh"
