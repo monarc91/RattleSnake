@@ -8,8 +8,8 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   dateUS.sh is part of viper.sh (rtlsnake.sh RattleSnake)                 #
-    #   VIPER to accommodate dictionnary                                       #
+    #   dateUS.sh is part of RattleSnake (rtlsnake.sh RattleSnake)             #
+    #   RattleSnake to accommodate dictionnary                                 #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
@@ -585,9 +585,8 @@ doWord(){
         fi
         for k in ${dates[@]}
         do
-        if [[ $l == 0 ]];then
             echo "$k"
-        fi
+        
         if [[ $cas -eq 1 && $ord == "all" ]]
         then
             echo "${line}${k}"
