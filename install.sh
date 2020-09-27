@@ -10,7 +10,7 @@ ProgressBar()
     {
         # Process data
         	_progress=$(((${1}*100/${2}*100)/100))
-                _done=$(((_progress*4)/10))
+            _done=$(((_progress*4)/10))
         	_left=$((40-_done))
         # Build progressbar string lengths
         	_done=$(printf "%${_done}s")
@@ -22,7 +22,8 @@ ProgressBar()
         printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
     }
 
-
+# truc=$(printf "%10s")
+# echo "${truc// /#}"
 # This accounts as the "totalState" variable for the ProgressBar function
 _end=5
 
@@ -63,17 +64,22 @@ then
         echo -ne " Copy file ${files[$fil]}"
         sleep 0.1
     done
-    tput cnorm; tput rc; tput el
+    tput rc; tput el
     echo -ne " Copy files [All Done]"
+
     
     tput setaf 3
     printf '\n\nFinished!\n'
+    
     echo -e "install rtlsnake DONE.\n"
     tput setaf 6
     echo -e "Now you can run rtlsnake by the command rtlsnake.sh"
     tput setaf 7
+    tput cnorm
+    exit 0
 else
     tput setaf 1
     echo -e  "\n\nplease use sudo or root user to install ex: sudo ./install.sh"
     tput setaf 7
+    exit 1
 fi
