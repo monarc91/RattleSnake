@@ -1,4 +1,4 @@
-# _Viper_ change her name for _rattlesnake_ now! ( ***file*** "rtlsnake.sh")
+# _Rattlesnake_ ( _file_ "rtlsnake.sh")
 
 ![](crotalep.png)
 
