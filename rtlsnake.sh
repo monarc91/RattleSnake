@@ -13,7 +13,7 @@
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
-    #   Version: 0.9.0                                                         #
+    #   Version: 0.9.2                                                         #
     #   Licence:  GPL3                                                         #
     #   Copyright: Monarc(c)2020                                               #
     #__________________________________________________________________________#
@@ -107,18 +107,18 @@ shift $((OPTIND -1))
     tput setaf 7
 if [[ $nb && $dict ]]
 then
-    nbWords=`< $dict wc -l`
+    nbWords=$(< "$dict" wc -l)
     echo "nombre de mots dans $dict: $nbWords"
     if [ "$casef" ] && [ ! "$order" ]
     then
         :
       else
-        result=$(($nbWords*303))
+        result=$((nbWords*303))
         lenR=${#result}
         if [ $lenR -gt 3 ]
         then
-            resultM=$(($result/$nb))
-            resultT=$(($resultM/60))
+            resultM=$((result/nb))
+            resultT=$((resultM/60))
             tput setaf 3
             echo "* $result possibilities! and $resultT mn at $nb k/s"
             tput setaf 7
@@ -156,36 +156,36 @@ then
     
           if [[ $longueurMAXDate =~ ^[0-9]+$ ]]; then
               if [[ $lapsDate =~ ^[0-9]{4}-[0-9]{4}$ ]]; then
-                  if [ $modeDate ]
+                  if [ "$modeDate" ]
                   then
-                    if [ $modeDate -eq 1 ] # mode ddmmyy
+                    if [ "$modeDate" -eq 1 ] # mode ddmmyy
                     then
-                      [ $casef ]&& : || casef=4
-                      [ $order ]&& : || order="normal"
-                      [ $lapsDate ]&& : || lapsDate="1950-2020"
-                      ./dateFR.sh $longueurMAXDate $dict $casef $order $lapsDate
+                      [ "$casef" ]&& : || casef=4
+                      [ "$order" ]&& : || order="normal"
+                      [ "$lapsDate" ]&& : || lapsDate="1950-2020"
+                      ./dateFR.sh "$longueurMAXDate" "$dict" "$casef" "$order" "$lapsDate"
                     fi
-                    if [ $modeDate -eq 2 ] # mode yymmdd
+                    if [ "$modeDate" -eq 2 ] # mode yymmdd
                     then
-                      [ $casef ]&& : || casef=4
-                      [ $order ]&& : || order="normal"
-                      [ $lapsDate ]&& : || lapsDate="1950-2020"
-                      ./dateUS.sh $longueurMAXDate $dict $casef $order $lapsDate
+                      [ "$casef" ]&& : || casef=4
+                      [ "$order" ]&& : || order="normal"
+                      [ "$lapsDate" ]&& : || lapsDate="1950-2020"
+                      ./dateUS.sh "$longueurMAXDate" "$dict" "$casef" "$order" "$lapsDate"
                     fi
-                    if [ $modeDate -eq 3 ] # mode yymmdd
+                    if [ "$modeDate" -eq 3 ] # mode yymmdd
                     then
-                      [ $casef ]&& : || casef=4
-                      [ $order ]&& : || order="normal"
-                      [ $lapsDate ]&& : || lapsDate="1950-2020"
-                      ./dateMO.sh $longueurMAXDate $dict $casef $order $lapsDate
+                      [ "$casef" ]&& : || casef=4
+                      [ "$order" ]&& : || order="normal"
+                      [ "$lapsDate" ]&& : || lapsDate="1950-2020"
+                      ./dateMO.sh "$longueurMAXDate" "$dict" "$casef" "$order" "$lapsDate"
                     fi
                   fi
                   if [[ -z $modeDate ]] # no mode dates
                   then
-                    [ $casef ]&& : || casef=4
-                    [ $order ]&& : || order="normal"
-                    [ $lapsDate ]&& : || lapsDate="1950-2020"
-                    ./dateFR.sh $longueurMAXDate $dict $casef $order $lapsDate
+                    [ "$casef" ]&& : || casef=4
+                    [ "$order" ]&& : || order="normal"
+                    [ "$lapsDate" ]&& : || lapsDate="1950-2020"
+                    ./dateFR.sh "$longueurMAXDate" "$dict" "$casef" "$order" "$lapsDate"
                   fi
                     
               else
@@ -234,30 +234,30 @@ terr() {
     
     done < "$departements"
 }
-echo $dept
+
 if [[ ! -z $dept ]]
 then
   if (( ${#dept} > 2 )) 
   then
     :
    else
-    terr $dept
+    terr "$dept"
   fi
 fi
 
 doWord(){
     file="$1"
-    [ ${2} ] && cas=$2 || cas=4
-    [ ${3} ] && ord=$3 || ord="all"
+    [ "${2}" ] && cas=$2 || cas=4
+    [ "${3}" ] && ord=$3 || ord="all"
     terre=$4
-    [ $5 ] && number=$5 || number=99
+    [ "$5" ] && number=$5 || number=99
 
     while IFS= read -r line
     do
         length=${#line}
         # majInit=`echo ${line:0:1} |tr '[:lower:]' '[:upper:]'` (source shellcheck.net)
         majInit=$(echo "${line:0:1}" |tr '[:lower:]' '[:upper:]')
-        maj=`echo ${line} |tr '[:lower:]' '[:upper:]'`
+        maj=$(echo "${line}" |tr '[:lower:]' '[:upper:]')
         if  [[ $cas -eq 1 && -z "$terre" ]] 
         then
           echo "$line"
