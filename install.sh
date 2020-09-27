@@ -63,7 +63,7 @@ then
         tput sc;
         echo -ne " Copy file ${files[$fil]}"
         tput el
-        #sleep 0.1
+        sleep 0.3
     done
     tput rc; tput el
     echo -ne " Copy files[All Done]"
