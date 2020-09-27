@@ -60,11 +60,12 @@ then
         cp "${files[$fil]}" /usr/bin 
         tput setaf 6
         ProgressBar "$(($fil+1))" $_end
+        tput sc;
         echo -ne " Copy file ${files[$fil]}"
         sleep 0.1
     done
-    tput cnorm
-   
+    tput cnorm; tput rc; tput el
+    echo -ne " Copy files [All Done]"
     
     tput setaf 3
     printf '\n\nFinished!\n'
