@@ -33,10 +33,8 @@
     # You should have received a copy of the GNU General Public License
     # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
     
-datey=`date +%Y`
+datey=$(date +%Y)
 datey=$((datey+1))
-longueurMaxDate=$1
-possibilities=0
 declare -a dates1
 declare -a dates
 
@@ -54,14 +52,11 @@ trenteun(){
         then
             result=1
     fi
-    if [[ "$mois" == "10" ]] 
+    if [[ "$mois" == "10" ]] || [[ "$mois" == "12" ]] 
         then
             result=1
     fi
-    if [[ "$mois" == "12" ]] 
-        then
-            result=1
-    fi
+   
     if [[ $result -eq 1 ]] 
         then
             true
@@ -71,7 +66,15 @@ trenteun(){
 }
 
 
-isleap() { date -d $1-02-29 &>/dev/null && true || false; }
+isleap() 
+    { 
+        if date -d "$1"-02-29 &>/dev/null
+        then
+            true 
+        else
+            false
+        fi
+    }
 
 indexA=0
 dat8()
@@ -82,28 +85,28 @@ dat8()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="$y$m$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="$y$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
         dates1["$indexA"]="$y$m$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
         fi
     else
@@ -112,13 +115,13 @@ dat8()
             for d in {01..28}
             do
             dates1["$indexA"]="$y$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
         dates1["$indexA"]="$y$m$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
         fi
     fi
@@ -133,34 +136,34 @@ dat7()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="$y$m${d:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="$y${m:1}$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="$y$m${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="$y$m${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     else
@@ -169,17 +172,17 @@ dat7()
             for d in {01..28}
             do
             dates1["$indexA"]="$y$m${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="$y$m${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     fi
@@ -194,34 +197,34 @@ dat6()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="${y:2}$m$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="$y${m:1}${d:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="${y:2}$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     else
@@ -230,17 +233,17 @@ dat6()
             for d in {01..28}
             do
             dates1["$indexA"]="${y:2}$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}$m$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     fi
@@ -256,40 +259,40 @@ dat5()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="${y:2}${m:1}$d"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="$y${m:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="${y:2}${m}${d:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="${y:2}${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${y:2}${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${y:2}${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     else
@@ -298,21 +301,21 @@ dat5()
             for d in {01..28}
             do
             dates1["$indexA"]="${y:2}${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${y:2}${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}${m:1}$d"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${y:2}${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     fi
@@ -328,46 +331,46 @@ dat4()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="${d:1}${m:1}${y:2}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="$y"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="${d:1}${m:1}${y:2}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="${d}${m}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d}${m}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d}${m}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     else
@@ -376,25 +379,25 @@ dat4()
             for d in {01..28}
             do
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d}${m}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="$y"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d:1}${m:1}${y:2}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${d}${m}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     fi
@@ -409,34 +412,34 @@ dat3()
     do
     for m in {01..12}
     do
-    if $( trenteun $m )
+    if trenteun "$m" 
     then
         for d in {01..31}
         do
         dates1["$indexA"]="${y:2}${m:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         dates1["$indexA"]="${m}${d:1}"
-        indexA=$(($indexA + 1))
+        indexA=$((indexA + 1))
         done
     fi
-    if $( isleap $y ) 
+    if isleap "$y" 
     then
         if [[ $m == 02 ]]
         then
             for d in {01..29}
             do
             dates1["$indexA"]="${y:2}${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     else
@@ -445,17 +448,17 @@ dat3()
             for d in {01..28}
             do
             dates1["$indexA"]="${y:2}${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             done
         else
         for d in {01..30}
         do
             dates1["$indexA"]="${y:2}${m:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
             dates1["$indexA"]="${m}${d:1}"
-            indexA=$(($indexA + 1))
+            indexA=$((indexA + 1))
         done
         fi
     fi
@@ -466,74 +469,74 @@ dat3()
 data=$1
 lapsDate=$5
 lgdt=${#data}
-if (( $lgdt > 1 ))
+if (( lgdt > 1 ))
 then
-    for ((i=0;i<$lgdt+1;i++))
+    for ((i=0;i<lgdt+1;i++))
     do
         if [[ ${data:$i} == 3* ]]
         then
-            dat3 $lapsDate
+            dat3 "$lapsDate"
             # echo "oui 3"
         fi
         if [[ ${data:$i} == 4* ]]
         then
-            dat4 $lapsDate
+            dat4 "$lapsDate"
             # echo "oui 4"
         fi
         if [[ ${data:$i} == 5* ]]
         then
-            dat5 $lapsDate
+            dat5 "$lapsDate"
             # echo "oui 5"
         fi
         if [[ ${data:$i} == 6* ]]
         then
-            dat6 $lapsDate
+            dat6 "$lapsDate"
         fi
         if [[ ${data:$i} == 7* ]]
         then
-            dat7 $lapsDate
+            dat7 "$lapsDate"
         fi
         if [[ ${data:$i} == 8* ]]
         then
-            dat8 $lapsDate
+            dat8 "$lapsDate"
         fi
     done
 else
     if [[ ${data} == 3 ]]
         then
-            dat3 $lapsDate
+            dat3 "$lapsDate"
             # echo "oui 3"
         fi
         if [[ ${data} == 4 ]]
         then
-            dat4 $lapsDate
+            dat4 "$lapsDate"
             # echo "oui 4"
         fi
         if [[ ${data} == 5 ]]
         then
-            dat5 $lapsDate
+            dat5 "$lapsDate"
             # echo "oui 5"
         fi
         if [[ ${data} == 6 ]]
         then
-            dat6 $lapsDate
+            dat6 "$lapsDate"
         fi
         if [[ ${data} == 7 ]]
         then
-            dat7 $lapsDate
+            dat7 "$lapsDate"
         fi
         if [[ ${data} == 8 ]]
         then
-            dat8 $lapsDate
+            dat8 "$lapsDate"
         fi
         if [[ ${data} == 9 ]]
         then
-            dat3 $lapsDate
-            dat4 $lapsDate
-            dat5 $lapsDate
-            dat6 $lapsDate
-            dat7 $lapsDate
-            dat8 $lapsDate
+            dat3 "$lapsDate"
+            dat4 "$lapsDate"
+            dat5 "$lapsDate"
+            dat6 "$lapsDate"
+            dat7 "$lapsDate"
+            dat8 "$lapsDate"
         fi
 fi
 
@@ -542,7 +545,7 @@ fi
 # dat3;dat5;dat4;dat6;dat7;dat8
 
 # dates=( `for i in ${dates1[@]}; do echo $i; done | sort -u` )
-dates=( $(for i in ${dates1[@]}; do echo "$i"; done | sort -u) )
+dates=( $(for i in "${dates1[@]}"; do echo "$i"; done | sort -u) )
 
 unset dates1
 
@@ -552,15 +555,15 @@ dict=$2
 
 doWord(){
     file="$dict"
-    [ ${2} ] && cas=$2 || cas=4
-    [ ${3} ] && ord=$3 || ord="all"
-    l=0
+    [ "${2}" ] && cas=$2 || cas=4
+    [ "${3}" ] && ord=$3 || ord="all"
+    
     
     while IFS= read -r line
     do
         length=${#line}
-        majInit=`echo ${line:0:1} |tr '[:lower:]' '[:upper:]'`
-        maj=`echo ${line} |tr '[:lower:]' '[:upper:]'`
+        majInit=$(echo "${line:0:1}" |tr '[:lower:]' '[:upper:]')
+        maj=$(echo "${line}" |tr '[:lower:]' '[:upper:]')
         if  [ $cas -eq 1 ] 
         then
           echo "$line"
@@ -579,7 +582,7 @@ doWord(){
           echo "$majInit${line:1:length}" # MAJ-word
           echo "${maj}"
         fi
-        for k in ${dates[@]}
+        for k in "${dates[@]}"
         do
             echo "$k"
         
@@ -587,39 +590,39 @@ doWord(){
         then
             echo "${line}${k}"
             echo "${k}${line}"
-            l=$(($l+1))
+            
 
           
         fi
         if [[ $cas -eq 1 && $ord == "normal" ]]
         then
             echo "${line}${k}"
-            l=$(($l+1))
+            
 
         fi
         if [[ $cas -eq 1 && $ord == "reverse" ]]
         then
             echo "${k}${line}"
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 2 && $ord == "all" ]]
         then
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 2 && $ord == "normal" ]] 
         then
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 2 && $ord == "reverse" ]]
         then
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 3 && $ord == "all" ]] 
@@ -627,7 +630,7 @@ doWord(){
             echo "${maj}"
             echo "${maj}${k}"
             echo "${k}${maj}"
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 3 && $ord == "normal" ]] 
@@ -646,7 +649,7 @@ doWord(){
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${line}${k}"
             echo "${k}${line}"
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 4 && $ord == "normal" ]] 
@@ -654,7 +657,7 @@ doWord(){
             echo "${maj}${k}"
             echo "${majInit}${line:1:length}${k}" # MAJ-word-number
             echo "${line}${k}"
-            l=$(($l+1))
+            
 
         fi
         if  [[ $cas -eq 4 && $ord == "reverse" ]] 
@@ -662,7 +665,7 @@ doWord(){
             echo "${k}${maj}"
             echo "${k}${majInit}${line:1:length}" # number-MAJ-word
             echo "${k}${line}"
-            l=$(($l+1))
+            
         fi
         
       done
