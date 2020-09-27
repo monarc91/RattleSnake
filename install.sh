@@ -41,16 +41,16 @@ files=( rtlsnake.sh dateFR.sh dateUS.sh dateMO.sh CPFrance.txt )
 if [[ $result == 0 ]]
 then
     tput setaf 2
-    echo "                  __    __   __                              __               "          
-    echo "   ____________ _/  |__/  |_|  |  _____  ______ ____ _____  |  | __ ____      "
-    echo "   \_  __ \__  \\\\   __\   __\  | /  __ \/  ___//    \\\\__  \ |  |/ // __ \\";tput setaf 6
-    echo "    |  | \// __ \|  |  |  | |  |_\\  ___/\___ \|   |  \/ __ \|    <\  ___/    ";tput setaf 3
-    echo "    |__|  (______/__|  |__| |____/\\_____>_____>___| _(______/__|__\\\\____> ";tput setaf 4
-    echo "                                                                              "
-    echo " Licence: GPL3                                                                "
-    echo " RattleSnake par Monarc(Marc Segur)                                           "
-    echo " Copyright: 2020                                               Version: 0.9.2 "
-    echo "------------------------------------------------------------------------------"
+    echo "                  __    __   __                              __                "          
+    echo "   ____________ _/  |__/  |_|  |  _____  ______ ____ _____  |  | __ ____       "
+    echo "   \_  __ \__  \\\\   __\   __\  | /  __ \/  ___//    \\\\__  \ |  |/ // __ \\ ";tput setaf 6
+    echo "    |  | \// __ \|  |  |  | |  |_\\  ___/\___ \|   |  \/ __ \|    <\  ___/     ";tput setaf 3
+    echo "    |__|  (______/__|  |__| |____/\\_____>_____>___| _(______/__|__\\\\____>   ";tput setaf 4
+    echo "                                                                               "
+    echo " Licence: GPL3                                                                 "
+    echo " RattleSnake par Monarc(Marc Segur)                                            "
+    echo " Copyright: 2020                                                Version: 0.9.2 "
+    echo "-------------------------------------------------------------------------------"
     tput setaf 7
     echo -e "install rtlsnake...\n"
 
@@ -62,10 +62,11 @@ then
         ProgressBar "$((fil+1))" $_end
         tput sc;
         echo -ne " Copy file ${files[$fil]}"
-        sleep 0.1
+        tput el
+        #sleep 0.1
     done
     tput rc; tput el
-    echo -ne " Copy files [All Done]"
+    echo -ne " Copy files[All Done]"
 
     
     tput setaf 3
@@ -79,7 +80,8 @@ then
     exit 0
 else
     tput setaf 1
-    echo -e  "\n\nplease use sudo or root user to install ex: sudo ./install.sh"
+    echo -ne "\nplease ";tput setaf 3; echo -n "use sudo"; tput setaf 1; echo -n " or ";
+    tput setaf 3; echo -n "root user"; tput setaf 1; echo -n " to install ex: "; tput setaf 6; echo -ne "sudo ./install.sh\n"
     tput setaf 7
     exit 1
 fi
