@@ -1,6 +1,6 @@
 # _Rattlesnake_ ( _file_ "rtlsnake.sh")
 
-![](rattle.jpg |width=200)
+![](rattle.jpg | width=200)
 
 this script add some number to words with aircrack like : _1word word1 to 99word and word99_ (with -o order option).  
 with **_lower, Camel_ and _UPPER_ cases** (word,Word and WORD with _-c option_).  
