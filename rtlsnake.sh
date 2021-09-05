@@ -8,8 +8,8 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   viper.sh                                                               #
-    #   VIPER to accommodate dictionnary                                       #
+    #   rtlsnake.sh                                                               #
+    #   RATTLESNAKE to accommodate dictionnary                                       #
     #   Author: Monarc(Marc Segur)                                             #
     #   Contact: pc-mac@mail.com                                               # 
     #   Date: 15 september 2020                                                #
@@ -77,7 +77,7 @@ while getopts ":c:o:f:d:n:t:k:b:l:m:" opt; do
           echo    " Invalid Option: -$OPTARG" 1>&2
           tput setaf 3  
           echo -e "#===============================================================================#"
-          echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #" 
+          echo -e "#   Usage: ./rtlsnake.sh -d listOFWords.txt <options>                              #" 
           echo -e "#   -d <dictionnary> list of words                                              #"
           echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #"
           echo -e "#   -o <order> normal <or> revert <or> all                                      #"
@@ -203,7 +203,7 @@ then
   else
     tput setaf 3  
     echo -e "#===============================================================================#"
-    echo -e "#   Usage: ./viper.sh -d listOFWords.txt <options>                              #" 
+    echo -e "#   Usage: ./rtlsnake.sh -d listOFWords.txt <options>                              #" 
     echo -e "#   -d <dictionnary> list of words                                              #"
     echo -e "#   -c <case> lower:1 Camel:2 UPPER:3 ALL:4                                     #"
     echo -e "#   -o <order> normal <or> revert <or> all                                      #"
