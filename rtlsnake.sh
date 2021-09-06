@@ -8,10 +8,10 @@
     #                                                                          #
     #                                                                          #
     #==========================================================================#
-    #   rtlsnake.sh                                                               #
-    #   RATTLESNAKE to accommodate dictionnary                                       #
+    #   rtlsnake.sh                                                            #
+    #   RATTLESNAKE to accommodate dictionnary                                 #
     #   Author: Monarc(Marc Segur)                                             #
-    #   Contact: pc-mac@mail.com                                               # 
+    #   Contact: monarc-pc@mail.com                                            # 
     #   Date: 15 september 2020                                                #
     #   Version: 0.9.2                                                         #
     #   Licence:  GPL3                                                         #
