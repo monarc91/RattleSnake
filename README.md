@@ -14,7 +14,6 @@ And **_-b_** is an option for possibles **dates** [1945-2020] (only french's for
 
 > **example:** -_l 1950-2020_
 
-> **please** use _rtlsnake.sh_ because I change the name to RattleSnake (**_rtlsnake.sh_**)
     
 ## rtlsnake.sh
 
@@ -49,5 +48,5 @@ And **_-b_** is an option for possibles **dates** [1945-2020] (only french's for
 simple bash program add some number to words with aircrack like : 1word word1 to 99word and word99.
 with lower Camel and UPPER cases.
 ##### command: 
-    ./crack.sh /home/kali/words.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
+    ./rtlsnake.sh /home/kali/words.txt |aircrack-ng -b XX:XX:XX:XX:XX:XX -w - /home/kali/handshake.cap
 
