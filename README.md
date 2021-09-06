@@ -2,7 +2,7 @@
 
 
 
-   <img src="rattle.jpg" width="260" height="400"  justify="center"/> 
+   <div style="text-align:center"><img src="rattle.jpg" width="260" height="400" /> </div>
    
 
 this script add some number to words with aircrack like : _1word word1 to 99word and word99_ (with -o order option).  
